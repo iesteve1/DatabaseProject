@@ -107,15 +107,21 @@ INSERT INTO Orders(OrderID, CustomerID, PaymentType, AmountDue, DateOrder, Emplo
 (),
 ();
 
-INSERT INTO Locations(LocationID, Name, AddressLine1, AddressLine2, City, State, ZipCode, Country, StoreHours, PhoneNumber) VALUES
-(),
+INSERT INTO Locations(Name, AddressLine1, AddressLine2, City, State, ZipCode, Country, StoreHours, PhoneNumber) VALUES
+('Store 1'),
 
 ();
 
-INSERT INTO MenuItem(ItemID, ItemName, Ingredients, Price, Cost, ItemType) VALUES
-(),
-();
-
+INSERT INTO MenuItem(ItemName, Ingredients, Price, Cost, ItemType) VALUES
+('Chicken Taco', 'Chicken,tortilla,sour cream, rice, salsa, tomatoes, guacamole', 3.50, 2.00, 'food'),
+('Steak Taco', 'Steak,tortilla,sour cream, rice, salsa, tomatoes, guacamole', 4.50, 3.00, 'food' ),
+('Shrimp Taco', 'Shrimp,tortilla,sour cream, rice, salsa, tomatoes, guacamole', 3.50, 2.00, 'food' ),
+('Chicken Burrito', 'Chicken,tortilla,sour cream, rice, salsa, tomatoes, beans, lettuce, guacamole', 6.50, 4.00, 'food'),
+('Steak Burrito', 'Steak,tortilla,sour cream, rice, salsa, tomatoes, beans, lettuce, guacamole', 7.50, 4.50, 'food'),
+('Mexican Coke', 'Carbonated water, sugar, caramel color, phosphoric acid, natural flavors, caffeine', 2.50, 1.00, 'drink'),
+('Jarritos', 'Fruit flavor, Carbonated water, sugar, phosphoric acid, natural flavors, ', 1.50, .50, 'drink'),
+('Chili Lolipops', 'Fruit flavor, lemon juice, salt, chili, sugar', 1.00, .30, 'snack'),
+('Churrito Chips', 'Puffed wheat, chili, lime, salt', 2.00, .50, 'snack'),
 /*-- Delete example: Delete the SME course
 DELETE FROM Course
 WHERE CourseTitle like 'SME%';
