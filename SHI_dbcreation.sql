@@ -103,7 +103,7 @@ INSERT INTO Orders(OrderID, CustomerID, PaymentType, AmountDue, DateOrder, Emplo
 (),
 ();
 
-INSERT INTO Locations(LocationID, Name, AddressLine1, AddressLine2, City, State, ZipCode, Country, StoreHours, PhoneNumber) VALUES
+INSERT INTO Locations(Name, AddressLine1, AddressLine2, City, State, ZipCode, Country, StoreHours, PhoneNumber) VALUES
 (),
 
 ();
