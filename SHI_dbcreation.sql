@@ -9,7 +9,8 @@ GO
 
 -- Create the customer and order tables
 CREATE TABLE Customer(
-  CustomerID INT IDENTITY(1,1) NOT NULL PRIMARY KEY CLUSTERED,
+  ID INT IDENTITY(1,1) NOT NULL PRIMARY KEY CLUSTERED,
+  CustomerID AS 'C' + RIGHT('00000' + CAST(ID AS VARCHAR(8)), 8) PERSISTED,
   LastName varchar(50) NOT NULL,
   FirstName varchar(50) NOT NULL,
   Email varchar(15),
@@ -22,8 +23,8 @@ CREATE TABLE Customer(
   Country varchar(3)
   );
   CREATE TABLE Locations(
-LocationID INT IDENTITY(1,1) NOT NULL PRIMARY KEY CLUSTERED,
-  ID AS 'L' + RIGHT('00000000' + CAST(LocationID AS VARCHAR(8)), 8) PERSISTED,
+ID INT IDENTITY(1,1) NOT NULL PRIMARY KEY CLUSTERED,
+  LocationID AS 'L' + RIGHT('00000' + CAST(ID AS VARCHAR(8)), 8) PERSISTED,
 Name varchar(30),
 AddressLine1 varchar(50),
  AddressLine2 varchar(20),
@@ -37,8 +38,8 @@ AddressLine1 varchar(50),
 
 
 CREATE TABLE Employees(
-  EmployeeID INT IDENTITY(1,1) NOT NULL PRIMARY KEY CLUSTERED,
-   EID AS 'E' + RIGHT('00000000' + CAST(ID AS VARCHAR(8)), 8) PERSISTED,
+  ID INT IDENTITY(1,1) NOT NULL PRIMARY KEY CLUSTERED,
+  EmployeeID AS 'E' + RIGHT('00000' + CAST(ID AS VARCHAR(8)), 8) PERSISTED,
   LName varchar(50) NOT NULL,
   FName varchar(50) NOT NULL,
   EmployeeType varchar(8) NOT NULL,
@@ -54,8 +55,8 @@ CREATE TABLE Employees(
   );
 
 CREATE TABLE Orders(
-	OrderID INT IDENTITY(1,1) NOT NULL PRIMARY KEY CLUSTERED,
-	OID AS 'OID' + RIGHT('00000000' + CAST(ID AS VARCHAR(8)), 8) PERSISTED,
+	ID INT IDENTITY(1,1) NOT NULL PRIMARY KEY CLUSTERED,
+  OrderID AS 'O' + RIGHT('00000' + CAST(ID AS VARCHAR(8)), 8) PERSISTED,
 	CustomerID  int NOT NULL FOREIGN KEY REFERENCES Customer(CustomerID),
 	PaymentType varchar(6),
 	AmountDue bigint NOT NULL,
@@ -66,8 +67,8 @@ CREATE TABLE Orders(
   
 
 CREATE TABLE MenuItem(
-ItemID INT IDENTITY(1,1) NOT NULL PRIMARY KEY CLUSTERED,
-   IID AS 'SKU' + RIGHT('00000000' + CAST(ID AS VARCHAR(8)), 8) PERSISTED,
+ID INT IDENTITY(1,1) NOT NULL PRIMARY KEY CLUSTERED,
+  ItemID AS 'SKU' + RIGHT('00000' + CAST(ID AS VARCHAR(8)), 8) PERSISTED,
    ItemName varchar(20),
    Ingredients varchar(50),
    Price float(5),
@@ -84,8 +85,7 @@ CREATE TABLE OrdersMenuItem(
 INSERT INTO Customer (LastName, FirstName, Email, PhoneNumber, AddressLine1, AddressLine2, City, State, ZipCode, Country) VALUES 
 
 ('Hernandez', 'Helena', 'NA', 7868791449, '1 leighton street', 'apt 1607', 'cambrdige', 'MA', 02141, 'US'),
-('Esteve', 'Isabel', 'NA', 6178347155, '150 Huntington Ave', 'Apt NB3', 'Boston', 'MA', 02115, 'US')
-trial; 
+('Esteve', 'Isabel', 'NA', 6178347155, '150 Huntington Ave', 'Apt NB3', 'Boston', 'MA', 02115, 'US'); 
 GO
 /*
 (10, 'David', 'Butsko');
@@ -104,9 +104,7 @@ INSERT INTO Orders(OrderID, CustomerID, PaymentType, AmountDue, DateOrder, Emplo
 ();
 
 INSERT INTO Locations(Name, AddressLine1, AddressLine2, City, State, ZipCode, Country, StoreHours, PhoneNumber) VALUES
-(),
-
-();
+('Store', '12 Walnut St', '', 'Boston', 'MA', 02156, 'US', 'Monday-Sunday 9am-10pm', 6171239871);
 
 INSERT INTO MenuItem(ItemID, ItemName, Ingredients, Price, Cost, ItemType) VALUES
 (),
