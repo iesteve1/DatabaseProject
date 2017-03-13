@@ -22,6 +22,7 @@ CREATE TABLE Customer(
   ZipCode char(5),
   Country varchar(3)
   );
+
   CREATE TABLE Locations(
 ID INT IDENTITY(1,1) NOT NULL PRIMARY KEY CLUSTERED,
   LocationID AS 'L' + RIGHT('00000' + CAST(ID AS VARCHAR(8)), 8) PERSISTED,
