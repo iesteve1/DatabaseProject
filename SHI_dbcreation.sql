@@ -114,7 +114,7 @@ INSERT INTO Customer(LastName, FirstName, Email, PhoneNumber, AddressLine1, Addr
 GO
 >>>>>>> origin/master
 
-INSERT INTO Employees(EmployeeID, FName, LName, EmployeeType, PhoneNumber, EMail, AddressLine1, AddressLine2, City, State, ZipCode, Country, LocationID) VALUES
+INSERT INTO Employees(FName, LName, EmployeeType, PhoneNumber, EMail, AddressLine1, AddressLine2, City, State, ZipCode, Country) VALUES
 ('Sophia', 'Rodriguez', 'Server', 6172157155, 'srodriguez@gmail.com', '150 Huntington Ave', 'Apt NC1', 'Boston', 'MA', 02115, 'US'),
 ('Isabela', 'Grasso', 'Server', 9172357155, 'igrasso@gmail.com', '145 Boylston St', 'Apt 2', 'Boston', 'MA', 02115, 'US'),
 ('Alexander', 'Yang', 'Server', 6172348734, 'ayang@gmail.com', '15 Newbury St', 'Apt 5a', 'Boston', 'MA', 02115, 'US'),
@@ -144,7 +144,8 @@ GO
 */
 GO
 
-INSERT INTO Orders(OrderID, CustomerID, PaymentType, AmountDue, DateOrder, EmployeeID, LocationID) VALUES
+INSERT INTO Orders(OrderID, PaymentType, AmountDue, DateOrder, EmployeeID, LocationID) VALUES
+('12 Walnut St', '', 'Boston', 'MA', 02156, 'US', 'Monday-Sunday 9am-10pm', 6171239871);
 (),
 ();
 
