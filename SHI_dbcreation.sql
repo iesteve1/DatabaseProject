@@ -90,7 +90,7 @@ CREATE TABLE OrdersMenuItem(
 );
 
 -- Insert data we need min 10 rows!
-<<<<<<< HEAD
+
 INSERT INTO Customer (LastName, FirstName, Email, PhoneNumber, AddressLine1, AddressLine2, City, State, ZipCode, Country) VALUES 
 =======
 <<<<<<< HEAD
@@ -98,7 +98,7 @@ INSERT INTO Customer (LastName, FirstName, Email, PhoneNumber, AddressLine1, Add
 
 ('Hernandez', 'Helena', 'NA', 7868791449, '1 leighton street', 'apt 1607', 'cambrdige', 'MA', 02141, 'US'),
 ('Esteve', 'Isabel', 'NA', 6178347155, '150 Huntington Ave', 'Apt NB3', 'Boston', 'MA', 02115, 'US'); 
-=======
+
 INSERT INTO Customer(LastName, FirstName, Email, PhoneNumber, AddressLine1, AddressLine2, City, State, ZipCode, Country) VALUES 
 ('Hernandez', 'Helena', 'hhernandez@babson.edu', 7868791449, '1 leighton street', 'apt 1607', 'cambrdige', 'MA', 02141, 'US'),
 ('Esteve', 'Isabel', 'iesteve@babson.edu', 6178347155, '150 Huntington Ave', 'Apt NB3', 'Boston', 'MA', 02115, 'US'),
@@ -110,7 +110,7 @@ INSERT INTO Customer(LastName, FirstName, Email, PhoneNumber, AddressLine1, Addr
 ('Bawa', 'Anica', 'abawa@babson.edu', 6172938456, '660 washington street', 'Apt 27F', 'Boston', 'MA', 02115, 'US'),
 ('Polonsky', 'Edu', 'epolonsky@babson.edu', 6172921956, '1 leighton street', 'Apt 1415', 'Boston', 'MA', 02141, 'US'),
 ('Sanabria', 'Roberto', 'rsanabria@babson.edu', 6172837167, '1 leighton street', 'Apt 2123', 'Boston', 'MA', 02141, 'US');
->>>>>>> origin/master
+
 GO
 >>>>>>> origin/master
 
@@ -149,19 +149,19 @@ INSERT INTO Orders(OrderID, PaymentType, AmountDue, DateOrder, EmployeeID, Locat
 (),
 ();
 
-<<<<<<< HEAD
+
 INSERT INTO Locations(Name, AddressLine1, AddressLine2, City, State, ZipCode, Country, StoreHours, PhoneNumber) VALUES
 =======
 <<<<<<< HEAD
 INSERT INTO Locations(Name, AddressLine1, AddressLine2, City, State, ZipCode, Country, StoreHours, PhoneNumber) VALUES
 ('Store', '12 Walnut St', '', 'Boston', 'MA', 02156, 'US', 'Monday-Sunday 9am-10pm', 6171239871);
-=======
+
 INSERT INTO Locations(LocationID, Name, AddressLine1, AddressLine2, City, State, ZipCode, Country, StoreHours, PhoneNumber) VALUES
 >>>>>>> origin/master
 (),
 
 ();
->>>>>>> origin/master
+
 
 INSERT INTO MenuItem(ItemID, ItemName, Ingredients, Price, Cost, ItemType) VALUES
 (),
