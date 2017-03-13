@@ -39,11 +39,7 @@ AddressLine1 varchar(50),
 
 CREATE TABLE Employees(
   ID INT IDENTITY(1,1) NOT NULL PRIMARY KEY CLUSTERED,
-<<<<<<< HEAD
-   EmployeeID AS 'E' + RIGHT('00000000' + CAST(ID AS VARCHAR(8)), 8) PERSISTED,
-=======
-  EmployeeID AS 'E' + RIGHT('00000' + CAST(ID AS VARCHAR(8)), 8) PERSISTED,
->>>>>>> origin/master
+   EmployeeID AS 'E' + RIGHT('0000000' + CAST(ID AS VARCHAR(8)), 8) PERSISTED,
   LName varchar(50) NOT NULL,
   FName varchar(50) NOT NULL,
   EmployeeType varchar(8) NOT NULL,
@@ -60,11 +56,8 @@ CREATE TABLE Employees(
 
 CREATE TABLE Orders(
 	ID INT IDENTITY(1,1) NOT NULL PRIMARY KEY CLUSTERED,
-<<<<<<< HEAD
-	OrderID AS 'OID' + RIGHT('00000000' + CAST(ID AS VARCHAR(8)), 8) PERSISTED,
-=======
-  OrderID AS 'O' + RIGHT('00000' + CAST(ID AS VARCHAR(8)), 8) PERSISTED,
->>>>>>> origin/master
+
+	OrderID AS 'OID' + RIGHT('00000' + CAST(ID AS VARCHAR(8)), 8) PERSISTED,
 	CustomerID  int NOT NULL FOREIGN KEY REFERENCES Customer(CustomerID),
 	PaymentType varchar(6),
 	AmountDue bigint NOT NULL,
@@ -72,7 +65,6 @@ CREATE TABLE Orders(
 	EmployeeID int NOT NULL FOREIGN KEY REFERENCES Employees(EmployeeID),
 	LocationID int NOT NULL FOREIGN KEY REFERENCES Locations(LocationID)
 );
-  
 
 CREATE TABLE MenuItem(
 ID INT IDENTITY(1,1) NOT NULL PRIMARY KEY CLUSTERED,
