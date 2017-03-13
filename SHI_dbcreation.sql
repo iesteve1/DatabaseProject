@@ -37,8 +37,8 @@ AddressLine1 varchar(50),
 
 
 CREATE TABLE Employees(
-  EmployeeID INT IDENTITY(1,1) NOT NULL PRIMARY KEY CLUSTERED,
-   EID AS 'E' + RIGHT('00000000' + CAST(ID AS VARCHAR(8)), 8) PERSISTED,
+  ID INT IDENTITY(1,1) NOT NULL PRIMARY KEY CLUSTERED,
+   EmployeeID AS 'E' + RIGHT('00000000' + CAST(ID AS VARCHAR(8)), 8) PERSISTED,
   LName varchar(50) NOT NULL,
   FName varchar(50) NOT NULL,
   EmployeeType varchar(8) NOT NULL,
@@ -54,8 +54,8 @@ CREATE TABLE Employees(
   );
 
 CREATE TABLE Orders(
-	OrderID INT IDENTITY(1,1) NOT NULL PRIMARY KEY CLUSTERED,
-	OID AS 'OID' + RIGHT('00000000' + CAST(ID AS VARCHAR(8)), 8) PERSISTED,
+	ID INT IDENTITY(1,1) NOT NULL PRIMARY KEY CLUSTERED,
+	OrderID AS 'OID' + RIGHT('00000000' + CAST(ID AS VARCHAR(8)), 8) PERSISTED,
 	CustomerID  int NOT NULL FOREIGN KEY REFERENCES Customer(CustomerID),
 	PaymentType varchar(6),
 	AmountDue bigint NOT NULL,
@@ -92,8 +92,6 @@ GO
 */
 
 INSERT INTO Employees(EmployeeID, FName, LName, EmployeeType, PhoneNumber, EMail, AddressLine1, AddressLine2, City, State, ZipCode, Country, LocationID) VALUES
-
-INSERT INTO Employees(EmployeeID, FName, LName, EmployeeType, PhoneNumber, EMail, AddressLine1, AddressLine2, City, State, ZipCode, Country, LocationID) VALUES
 ('Sophia', 'Rodriguez', 'Server', 6172157155, 'srodriguez@gmail.com', '150 Huntington Ave', 'Apt NC1', 'Boston', 'MA', 02115, 'US'),
 ('Isabela', 'Grasso', 'Server', 9172357155, 'igrasso@gmail.com', '145 Boylston St', 'Apt 2', 'Boston', 'MA', 02115, 'US'),
 ('Alexander', 'Yang', 'Server', 6172348734, 'ayang@gmail.com', '15 Newbury St', 'Apt 5a', 'Boston', 'MA', 02115, 'US'),
@@ -113,9 +111,7 @@ INSERT INTO Employees(EmployeeID, FName, LName, EmployeeType, PhoneNumber, EMail
 ('Luis', 'Esteve', 'Manager', 6176786666, 'lesteve@gmail.com', '231 Forest St', 'Box #5631', 'Wellesley', 'MA', 02457, 'US'),
 ('Alejandro', 'Cameo', 'Manager', 6934586666, 'acameo@gmail.com', '150 Huntington Ave', 'Apt SB2', 'Boston', 'MA', 02115, 'US'),
 ('Sofia', 'Castro', 'Manager', 6934583456, 'scastro@gmail.com', '150 Huntington Ave', 'Apt SG8', 'Boston', 'MA', 02115, 'US'),
-('Walter', 'Torres', 'Manager', 6173459666, 'wtorres@gmail.com', '150 Huntington Ave', 'Apt SJ9', 'Boston', 'MA', 02115, 'US'),
-;
-
+('Walter', 'Torres', 'Manager', 6173459666, 'wtorres@gmail.com', '150 Huntington Ave', 'Apt SJ9', 'Boston', 'MA', 02115, 'US');
 GO
 
 /*
