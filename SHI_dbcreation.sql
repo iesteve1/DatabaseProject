@@ -10,7 +10,6 @@ GO
 -- Create the customer and order tables
 CREATE TABLE Customer(
   CustomerID INT IDENTITY(1,1) NOT NULL PRIMARY KEY CLUSTERED,
-   CID AS 'C' + RIGHT('00000000' + CAST(ID AS VARCHAR(8)), 8) PERSISTED,
   LastName varchar(50) NOT NULL,
   FirstName varchar(50) NOT NULL,
   Email varchar(15),
@@ -22,10 +21,9 @@ CREATE TABLE Customer(
   ZipCode char(5),
   Country varchar(3)
   );
-
   CREATE TABLE Locations(
 LocationID INT IDENTITY(1,1) NOT NULL PRIMARY KEY CLUSTERED,
-   LID AS 'L' + RIGHT('00000000' + CAST(ID AS VARCHAR(8)), 8) PERSISTED,
+  ID AS 'L' + RIGHT('00000000' + CAST(LocationID AS VARCHAR(8)), 8) PERSISTED,
 Name varchar(30),
 AddressLine1 varchar(50),
  AddressLine2 varchar(20),
@@ -83,10 +81,12 @@ CREATE TABLE OrdersMenuItem(
 );
 
 -- Insert data we need min 10 rows!
-INSERT INTO Customer (CustomerID, LastName, FirstName, Email, PhoneNumber, AddressLine1, AddressLine2, City, State, ZipCode, Country) VALUES 
-/*
-(1, 'Beong Jo', 'Kang'),
+INSERT INTO Customer (LastName, FirstName, Email, PhoneNumber, AddressLine1, AddressLine2, City, State, ZipCode, Country) VALUES 
 
+('Hernandez', 'Helena', 'NA', 7868791449, '1 leighton street', 'apt 1607', 'cambrdige', 'MA', 02141, 'US'),
+('Esteve', 'Isabel', 'NA', 6178347155, '150 Huntington Ave', 'Apt NB3', 'Boston', 'MA', 02115, 'US');
+GO
+/*
 (10, 'David', 'Butsko');
 */
 
