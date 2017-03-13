@@ -132,6 +132,7 @@ GO
 INSERT INTO Orders(OrderID, PaymentType, AmountDue, DateOrder, EmployeeID, LocationID) VALUES
 ('12 Walnut St', '', 'Boston', 'MA', 02156, 'US', 'Monday-Sunday 9am-10pm', 6171239871);
 
+<<<<<<< HEAD
 
 INSERT INTO Locations(Name, AddressLine1, AddressLine2, City, State, ZipCode, Country, StoreHours, PhoneNumber) VALUES
 ('Store 1'),
@@ -143,6 +144,20 @@ INSERT INTO Locations(Name, AddressLine1, AddressLine2, City, State, ZipCode, Co
 ('Store', '12 Walnut St', '', 'Boston', 'MA', 02156, 'US', 'Monday-Sunday 9am-10pm', 6171239871);
 
 
+=======
+INSERT INTO Locations(Name, AddressLine1, AddressLine2, City, State, ZipCode, Country, StoreHours, PhoneNumber) VALUES
+('Store', '12 Walnut St', '', 'Boston', 'MA', 02156, 'US', 'Monday-Sunday 9am-10pm', 6171239871),
+('Store', '101 West 15th St', '', 'New York', 'NY', 10011, 'US', 'Monday-Sunday 9am-10pm', 2123546374),
+('Store', '20 S Park St', '', 'Montclair', 'NJ', 07042, 'US', 'Monday-Sunday 9am-10pm', 9736550157),
+('Store', '271 Granby St', '', 'Norfolk', 'VA', 23510, 'US', 'Monday-Sunday 9am-10pm', 7574469240),
+('Store', '119 E Grand River Ave', '', 'East Lansing', 'MI', 48823, 'US', 'Monday-Sunday 9am-10pm', 5173243434),
+('Store', '371 King St', '', 'Charleston', 'SC', 29401, 'US', 'Monday-Sunday 9am-10pm', 8437205293),
+('Store', '7650 Melrose Ave', '', 'Los Angeles', 'CA', 90046, 'US', 'Monday-Sunday 9am-10pm', 3236533231),
+('Store', '14608 Ventura Blvd', '', 'Sherman Oaks', 'CA', 91403, 'US', 'Monday-Sunday 9am-10pm', 8187893604),
+('Store', '2735 W 7th St', '', 'Fort Worth', 'TX', 76107, 'US', 'Monday-Sunday 9am-10pm', 8173340314),
+('Store', '2406 Guadalupe St', '', 'Austin', 'TX', 78705, 'US', 'Monday-Sunday 9am-10pm', 5124721621);
+GO
+>>>>>>> origin/master
 
 
 INSERT INTO MenuItem(ItemName, Ingredients, Price, Cost, ItemType) VALUES
@@ -155,6 +170,9 @@ INSERT INTO MenuItem(ItemName, Ingredients, Price, Cost, ItemType) VALUES
 ('Jarritos', 'Fruit flavor, Carbonated water, sugar, phosphoric acid, natural flavors, ', 1.50, .50, 'drink'),
 ('Chili Lolipops', 'Fruit flavor, lemon juice, salt, chili, sugar', 1.00, .30, 'snack'),
 ('Churrito Chips', 'Puffed wheat, chili, lime, salt', 2.00, .50, 'snack'),
+('Tin Larin', 'Wafers, peanut butter, chocolate, salt, sugar', 1.00, .40, 'snack');
+GO
+
 /*-- Delete example: Delete the SME course
 DELETE FROM Course
 WHERE CourseTitle like 'SME%';
