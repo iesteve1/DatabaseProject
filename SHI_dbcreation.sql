@@ -84,7 +84,8 @@ CREATE TABLE OrdersMenuItem(
 INSERT INTO Customer (LastName, FirstName, Email, PhoneNumber, AddressLine1, AddressLine2, City, State, ZipCode, Country) VALUES 
 
 ('Hernandez', 'Helena', 'NA', 7868791449, '1 leighton street', 'apt 1607', 'cambrdige', 'MA', 02141, 'US'),
-('Esteve', 'Isabel', 'NA', 6178347155, '150 Huntington Ave', 'Apt NB3', 'Boston', 'MA', 02115, 'US');
+('Esteve', 'Isabel', 'NA', 6178347155, '150 Huntington Ave', 'Apt NB3', 'Boston', 'MA', 02115, 'US')
+trial; 
 GO
 /*
 (10, 'David', 'Butsko');
