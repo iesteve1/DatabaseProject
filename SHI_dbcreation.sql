@@ -91,13 +91,6 @@ CREATE TABLE OrdersMenuItem(
 
 -- Insert data we need min 10 rows!
 <<<<<<< HEAD
-INSERT INTO Customer (LastName, FirstName, Email, PhoneNumber, AddressLine1, AddressLine2, City, State, ZipCode, Country) VALUES 
-=======
-<<<<<<< HEAD
-INSERT INTO Customer (LastName, FirstName, Email, PhoneNumber, AddressLine1, AddressLine2, City, State, ZipCode, Country) VALUES 
-
-('Hernandez', 'Helena', 'NA', 7868791449, '1 leighton street', 'apt 1607', 'cambrdige', 'MA', 02141, 'US'),
-('Esteve', 'Isabel', 'NA', 6178347155, '150 Huntington Ave', 'Apt NB3', 'Boston', 'MA', 02115, 'US'); 
 =======
 INSERT INTO Customer(LastName, FirstName, Email, PhoneNumber, AddressLine1, AddressLine2, City, State, ZipCode, Country) VALUES 
 ('Hernandez', 'Helena', 'hhernandez@babson.edu', 7868791449, '1 leighton street', 'apt 1607', 'cambrdige', 'MA', 02141, 'US'),
@@ -144,10 +137,28 @@ GO
 */
 GO
 
-INSERT INTO Orders(OrderID, PaymentType, AmountDue, DateOrder, EmployeeID, LocationID) VALUES
-('12 Walnut St', '', 'Boston', 'MA', 02156, 'US', 'Monday-Sunday 9am-10pm', 6171239871);
-(),
-();
+INSERT INTO Orders(PaymentType, AmountDue, DateOrder) VALUES
+('Cash', '32.00', '03/08/2017'),
+('Credit', '44.00', '03/08/2017'),
+('Cash', '18.00', '03/08/2017'),
+('Credit', '24.00', '03/09/2017'),
+('Cash', '28.00', '03/09/2017'),
+('Credit', '16.00', '03/09/2017'),
+('Cash', '34.00', '03/09/2017'),
+('Credit', '22.50', '03/10/2017'),
+('Cash', '45.50', '03/10/2017'),
+('Credit', '26.50', '03/10/2017'),
+('Cash', '23.00', '03/11/2017'),
+('Credit', '18.50', '03/11/2017'),
+('Cash', '18.00', '03/11/2017'),
+('Credit', '24.00', '03/11/2017'),
+('Cash', '18.00', '03/11/2017'),
+('Credit', '24.00', '03/11/2017'),
+('Cash', '18.00', '03/08/2017'),
+('Credit', '24.00', '03/09/2017'),
+('Cash', '18.00', '03/09/2017'),
+('Credit', '24.00', '03/10/2017'),
+GO
 
 <<<<<<< HEAD
 INSERT INTO Locations(Name, AddressLine1, AddressLine2, City, State, ZipCode, Country, StoreHours, PhoneNumber) VALUES
