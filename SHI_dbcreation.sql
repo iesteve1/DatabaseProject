@@ -9,7 +9,8 @@ GO
 
 -- Create the customer and order tables
 CREATE TABLE Customer(
-  CustomerID INT IDENTITY(1,1) NOT NULL PRIMARY KEY CLUSTERED,
+  ID INT IDENTITY(1,1) NOT NULL PRIMARY KEY CLUSTERED,
+  CustomerID AS 'C' + RIGHT('00000' + CAST(ID AS VARCHAR(8)), 8) PERSISTED,
   LastName varchar(50) NOT NULL,
   FirstName varchar(50) NOT NULL,
   Email varchar(15),
@@ -22,8 +23,8 @@ CREATE TABLE Customer(
   Country varchar(3)
   );
   CREATE TABLE Locations(
-LocationID INT IDENTITY(1,1) NOT NULL PRIMARY KEY CLUSTERED,
-  ID AS 'L' + RIGHT('00000000' + CAST(LocationID AS VARCHAR(8)), 8) PERSISTED,
+ID INT IDENTITY(1,1) NOT NULL PRIMARY KEY CLUSTERED,
+  LocationID AS 'L' + RIGHT('00000' + CAST(ID AS VARCHAR(8)), 8) PERSISTED,
 Name varchar(30),
 AddressLine1 varchar(50),
  AddressLine2 varchar(20),
@@ -38,7 +39,11 @@ AddressLine1 varchar(50),
 
 CREATE TABLE Employees(
   ID INT IDENTITY(1,1) NOT NULL PRIMARY KEY CLUSTERED,
+<<<<<<< HEAD
    EmployeeID AS 'E' + RIGHT('00000000' + CAST(ID AS VARCHAR(8)), 8) PERSISTED,
+=======
+  EmployeeID AS 'E' + RIGHT('00000' + CAST(ID AS VARCHAR(8)), 8) PERSISTED,
+>>>>>>> origin/master
   LName varchar(50) NOT NULL,
   FName varchar(50) NOT NULL,
   EmployeeType varchar(8) NOT NULL,
@@ -55,7 +60,11 @@ CREATE TABLE Employees(
 
 CREATE TABLE Orders(
 	ID INT IDENTITY(1,1) NOT NULL PRIMARY KEY CLUSTERED,
+<<<<<<< HEAD
 	OrderID AS 'OID' + RIGHT('00000000' + CAST(ID AS VARCHAR(8)), 8) PERSISTED,
+=======
+  OrderID AS 'O' + RIGHT('00000' + CAST(ID AS VARCHAR(8)), 8) PERSISTED,
+>>>>>>> origin/master
 	CustomerID  int NOT NULL FOREIGN KEY REFERENCES Customer(CustomerID),
 	PaymentType varchar(6),
 	AmountDue bigint NOT NULL,
@@ -66,8 +75,8 @@ CREATE TABLE Orders(
   
 
 CREATE TABLE MenuItem(
-ItemID INT IDENTITY(1,1) NOT NULL PRIMARY KEY CLUSTERED,
-   IID AS 'SKU' + RIGHT('00000000' + CAST(ID AS VARCHAR(8)), 8) PERSISTED,
+ID INT IDENTITY(1,1) NOT NULL PRIMARY KEY CLUSTERED,
+  ItemID AS 'SKU' + RIGHT('00000' + CAST(ID AS VARCHAR(8)), 8) PERSISTED,
    ItemName varchar(20),
    Ingredients varchar(50),
    Price float(5),
@@ -81,15 +90,29 @@ CREATE TABLE OrdersMenuItem(
 );
 
 -- Insert data we need min 10 rows!
+<<<<<<< HEAD
+INSERT INTO Customer (LastName, FirstName, Email, PhoneNumber, AddressLine1, AddressLine2, City, State, ZipCode, Country) VALUES 
+=======
+<<<<<<< HEAD
 INSERT INTO Customer (LastName, FirstName, Email, PhoneNumber, AddressLine1, AddressLine2, City, State, ZipCode, Country) VALUES 
 
 ('Hernandez', 'Helena', 'NA', 7868791449, '1 leighton street', 'apt 1607', 'cambrdige', 'MA', 02141, 'US'),
-('Esteve', 'Isabel', 'NA', 6178347155, '150 Huntington Ave', 'Apt NB3', 'Boston', 'MA', 02115, 'US')
-trial; 
+('Esteve', 'Isabel', 'NA', 6178347155, '150 Huntington Ave', 'Apt NB3', 'Boston', 'MA', 02115, 'US'); 
+=======
+INSERT INTO Customer(LastName, FirstName, Email, PhoneNumber, AddressLine1, AddressLine2, City, State, ZipCode, Country) VALUES 
+('Hernandez', 'Helena', 'hhernandez@babson.edu', 7868791449, '1 leighton street', 'apt 1607', 'cambrdige', 'MA', 02141, 'US'),
+('Esteve', 'Isabel', 'iesteve@babson.edu', 6178347155, '150 Huntington Ave', 'Apt NB3', 'Boston', 'MA', 02115, 'US'),
+('Cajigas', 'Alexis', 'acajigas@babson.edu', 305569304, '234 los pinos circle', 'NA', 'Miami', 'FL', 33423, 'US'),
+('DiCapua', 'Lydia', 'ldicapua@babson.edu', 6172345678, '150 Huntington Ave', 'Apt KB4', 'Boston', 'MA', 02115, 'US'),
+('Baquero', 'Javier', 'jbaquero@babson.edu', 6171237155, '1 leighton street', 'Apt 316', 'Boston', 'MA', 02141, 'US'),
+('Michan', 'Carlos', 'cmichan@babson.edu', 6178344555, '1 leighton street', 'Apt 2143', 'Boston', 'MA', 02141, 'US'),
+('Ulloa', 'Xime', 'xulloa@babson.edu', 3056727355, '10 museum way', 'Apt 1628', 'Boston', 'MA', 02141, 'US'),
+('Bawa', 'Anica', 'abawa@babson.edu', 6172938456, '660 washington street', 'Apt 27F', 'Boston', 'MA', 02115, 'US'),
+('Polonsky', 'Edu', 'epolonsky@babson.edu', 6172921956, '1 leighton street', 'Apt 1415', 'Boston', 'MA', 02141, 'US'),
+('Sanabria', 'Roberto', 'rsanabria@babson.edu', 6172837167, '1 leighton street', 'Apt 2123', 'Boston', 'MA', 02141, 'US');
+>>>>>>> origin/master
 GO
-/*
-(10, 'David', 'Butsko');
-*/
+>>>>>>> origin/master
 
 INSERT INTO Employees(EmployeeID, FName, LName, EmployeeType, PhoneNumber, EMail, AddressLine1, AddressLine2, City, State, ZipCode, Country, LocationID) VALUES
 ('Sophia', 'Rodriguez', 'Server', 6172157155, 'srodriguez@gmail.com', '150 Huntington Ave', 'Apt NC1', 'Boston', 'MA', 02115, 'US'),
@@ -125,10 +148,19 @@ INSERT INTO Orders(OrderID, CustomerID, PaymentType, AmountDue, DateOrder, Emplo
 (),
 ();
 
+<<<<<<< HEAD
 INSERT INTO Locations(Name, AddressLine1, AddressLine2, City, State, ZipCode, Country, StoreHours, PhoneNumber) VALUES
+=======
+<<<<<<< HEAD
+INSERT INTO Locations(Name, AddressLine1, AddressLine2, City, State, ZipCode, Country, StoreHours, PhoneNumber) VALUES
+('Store', '12 Walnut St', '', 'Boston', 'MA', 02156, 'US', 'Monday-Sunday 9am-10pm', 6171239871);
+=======
+INSERT INTO Locations(LocationID, Name, AddressLine1, AddressLine2, City, State, ZipCode, Country, StoreHours, PhoneNumber) VALUES
+>>>>>>> origin/master
 (),
 
 ();
+>>>>>>> origin/master
 
 INSERT INTO MenuItem(ItemID, ItemName, Ingredients, Price, Cost, ItemType) VALUES
 (),
