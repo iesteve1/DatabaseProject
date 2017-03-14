@@ -101,11 +101,28 @@ INSERT INTO Customer(LastName, FirstName, Email, PhoneNumber, AddressLine1, Addr
 
 GO
 
+INSERT INTO Locations(Name, AddressLine1, City, State, ZipCode, Country, StoreHours, PhoneNumber) VALUES
+('SHI Cocina BOS', '12 Walnut St', 'Boston', 'MA', 02156, 'US', 'Monday-Sunday 9am-10pm', 6171239871),
+('SHI Cocina NY', '101 West 15th St', 'New York', 'NY', 10011, 'US', 'Monday-Sunday 9am-10pm', 2123546374),
+('SHI Cocina NJ', '20 S Park St', 'Montclair', 'NJ', 07042, 'US', 'Monday-Sunday 9am-10pm', 9736550157),
+('SHI Cocina Norfolk', '271 Granby St',  'Norfolk', 'VA', 23510, 'US', 'Monday-Sunday 9am-10pm', 7574469240),
+('SHI Cocina East', '119 E Grand River Ave', 'East Lansing', 'MI', 48823, 'US', 'Monday-Sunday 9am-10pm', 5173243434),
+('SHI Cocina Charleston', '371 King St', 'Charleston', 'SC', 29401, 'US', 'Monday-Sunday 9am-10pm', 8437205293),
+('SHI Cocina LA', '7650 Melrose Ave', 'Los Angeles', 'CA', 90046, 'US', 'Monday-Sunday 9am-10pm', 3236533231),
+('SHI Cocina Oaks', '14608 Ventura Blvd', 'Sherman Oaks', 'CA', 91403, 'US', 'Monday-Sunday 9am-10pm', 8187893604),
+('SHI Cocina Dallas', '2735 W 7th St', 'Fort Worth', 'TX', 76107, 'US', 'Monday-Sunday 9am-10pm', 8173340314),
+('SHI Cocina Austin', '2406 Guadalupe St', 'Austin', 'TX', 78705, 'US', 'Monday-Sunday 9am-10pm', 5124721621);
+GO
+
 /* need to add location id need to match to one of the ones that are created from the locations table*/
 INSERT INTO Employees(FName, LName, EmployeeType, PhoneNumber, EMail, AddressLine1, AddressLine2, City, State, ZipCode, Country, LocationID) VALUES
 ('Sophia','Rodriguez', 'Server', 6172157155, 'srodriguez@gmail.com', '150 Huntington Ave', 'Apt NC1', 'Boston', 'MA', 02115, 'US', 1),
 ('Isabela', 'Grasso', 'Server', 9172357155, 'igrasso@gmail.com', '145 Boylston St', 'Apt 2', 'Boston', 'MA', 02115, 'US', 2),
+<<<<<<< HEAD
 ('Alexander', 'Yang', 'Server', 6172348734, 'ayang@gmail.com', '15 Newbury St', 'Apt 5a', 'Boston', 'MA', 02115, 'US', 3) ,
+=======
+('Alexander', 'Yang', 'Server', 6172348734, 'ayang@gmail.com', '15 Newbury St', 'Apt 5a', 'Boston', 'MA', 02115, 'US', 3),
+>>>>>>> origin/master
 ('John', 'Sawyer', 'Server', 6172353455, 'jsawyer@gmail.com', '19 Boylston St', 'Apt 2', 'Jamaica Plain', 'MA', 02130, 'US', 5),
 ('Emily', 'Cerra', 'Server', 6171112465, 'ecerra@gmail.com', '19 Boylston St', 'Apt 6', 'Jamaica Plain', 'MA', 02130, 'US', 6),
 ('Emily', 'Mayer', 'Server', 9171122465, 'emayer@gmail.com', '231 Forest St', 'Box #4321', 'Wellesley', 'MA', 02457, 'US', 7),
@@ -125,20 +142,9 @@ INSERT INTO Employees(FName, LName, EmployeeType, PhoneNumber, EMail, AddressLin
 ('Kyle', 'Bissel', 'Server', 9153457155, 'kbissel@gmail.com', '231 Forest St', 'Box #2391', 'Wellesley', 'MA', 02457, 'US', 4);
 GO
 
-INSERT INTO Locations(Name, AddressLine1, City, State, ZipCode, Country, StoreHours, PhoneNumber) VALUES
-('SHI Cocina BOS', '12 Walnut St', 'Boston', 'MA', 02156, 'US', 'Monday-Sunday 9am-10pm', 6171239871),
-('SHI Cocina NY', '101 West 15th St', 'New York', 'NY', 10011, 'US', 'Monday-Sunday 9am-10pm', 2123546374),
-('SHI Cocina NJ', '20 S Park St', 'Montclair', 'NJ', 07042, 'US', 'Monday-Sunday 9am-10pm', 9736550157),
-('SHI Cocina Norfolk', '271 Granby St',  'Norfolk', 'VA', 23510, 'US', 'Monday-Sunday 9am-10pm', 7574469240),
-('SHI Cocina East', '119 E Grand River Ave', 'East Lansing', 'MI', 48823, 'US', 'Monday-Sunday 9am-10pm', 5173243434),
-('SHI Cocina Charleston', '371 King St', 'Charleston', 'SC', 29401, 'US', 'Monday-Sunday 9am-10pm', 8437205293),
-('SHI Cocina LA', '7650 Melrose Ave', 'Los Angeles', 'CA', 90046, 'US', 'Monday-Sunday 9am-10pm', 3236533231),
-('SHI Cocina Oaks', '14608 Ventura Blvd', 'Sherman Oaks', 'CA', 91403, 'US', 'Monday-Sunday 9am-10pm', 8187893604),
-('SHI Cocina Dallas', '2735 W 7th St', 'Fort Worth', 'TX', 76107, 'US', 'Monday-Sunday 9am-10pm', 8173340314),
-('SHI Cocina Austin', '2406 Guadalupe St', 'Austin', 'TX', 78705, 'US', 'Monday-Sunday 9am-10pm', 5124721621);
-GO
 
-/*INSERT INTO Orders(CustomerID, PaymentType, AmountDue, EmployeeID, LocationID) VALUES
+
+/*INSERT INTO Orders(CustomerID, PaymentType, AmountDue, EmployeeID) VALUES
 ('Cash', '32.00', '03/08/2017'),
 ('Credit', '44.00', '03/08/2017'),
 ('Cash', '18.00', '03/08/2017'),
