@@ -203,3 +203,12 @@ SELECT * FROM OrdersMenuItem;
 select PaymentType, COUNT(*) as Popular_Payment_Method
 from Orders
 group by PaymentType ; 
+
+/*Which employees are underperforming compared to average by orders sold?*/
+
+/*Show the name of the location where the average sold of food is higher than the average sold of drinks.*/
+
+/*Who are the best employees by amounts of orders sold?*/
+
+/*Who are the best customers based on number of visits and total amount spent?*/
+
