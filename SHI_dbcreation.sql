@@ -59,6 +59,7 @@ CREATE TABLE Orders(
 	OrderID INT IDENTITY(1,1) NOT NULL PRIMARY KEY CLUSTERED,
 	ID AS 'O' + RIGHT('00000' + CAST(OrderID AS VARCHAR(8)), 8) PERSISTED,
 	CustomerID  int NOT NULL FOREIGN KEY REFERENCES Customer(CustomerID),
+	AmountDue float(5) NOT NULL,
 	PaymentType varchar(6),
 	DateOrder datetime constraint DF_DateOrder DEFAULT (getdate()),
 	EmployeeID int NOT NULL FOREIGN KEY REFERENCES Employees(EmployeeID),
@@ -136,17 +137,17 @@ INSERT INTO Employees(FName, LName, EmployeeType, PhoneNumber, EMail, AddressLin
 ('Kyle', 'Bissel', 'Server', 9153457155, 'kbissel@gmail.com', '231 Forest St', 'Box #2391', 'Wellesley', 'MA', 02457, 'US', 4);
 GO
 
-INSERT INTO Orders(CustomerID, PaymentType, EmployeeID, LocationID) VALUES
-(1, 'cash',5,6),
-(2, 'cash', 6,7),
-(3, 'cash',20,4),
-(4, 'cash',1,1),
-(5, 'credit',4,5),
-(6, 'credit', 7,8),
-(7, 'credit',2,2),
-(8, 'credit', 8,9),
-(9, 'credit',3,3),
-(3, 'cash', 9,10);
+INSERT INTO Orders(CustomerID, AmountDue, PaymentType, EmployeeID, LocationID) VALUES
+(1, 12,'cash',5,6),
+(2, 27, 'cash', 6,7),
+(3,30, 'cash',20,4),
+(4,30, 'cash',1,1),
+(5,42, 'credit',4,5),
+(6,4.50, 'credit', 7,8),
+(7,24, 'credit',2,2),
+(8,10, 'credit', 8,9),
+(9,24, 'credit',3,3),
+(3,22, 'cash', 9,10);
 GO
 
 INSERT INTO MenuItem(ItemName, Ingredients, Price, Cost, ItemType) VALUES
@@ -162,9 +163,31 @@ INSERT INTO MenuItem(ItemName, Ingredients, Price, Cost, ItemType) VALUES
 ('Tin Larin', 'Wafers, peanut butter, chocolate, salt, sugar', 1.00, .40, 'snack');
 GO
 
-INSERT INTO OrderMenuItem(OrderID, ItemID, Qty)VALUES
-(),
-();
+INSERT INTO OrdersMenuItem(OrderID, ItemID, Qty)VALUES
+(1, 3, 2),
+(1, 7, 2),
+(1,8,2),
+(2,1,4),
+(2,4,2),
+(3,10,30),
+(4,6,2),
+(4,5,2),
+(4,8,10),
+(5,9,15),
+(5,10,12),
+(6,2,1),
+(7, 1,2),
+(7,3,1),
+(7,7,3),
+(7,8,3),
+(7,9,3),
+(8,5,1),
+(8,7,1),
+(8,10,1),
+(9,3,4),
+(9,6,4),
+(10,1,2),
+(10,5,2);
 GO
 
 /*Queries*/
