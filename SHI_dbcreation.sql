@@ -206,35 +206,19 @@ SELECT * FROM OrdersMenuItem;
 A query that selects records from two (or multiple) tables using INNER JOIN.
 A query that selects records from two (or multiple) tables using LEFT OUTER JOIN (or RIGHT OUTER JOIN or FULL OUTER JOIN). Specify why outer join is neccesary in comment block. Make sure your fake data could reflect the necessary. If it could not, you need to go back to part 2 to redo the data insertion, or you can use INSERT INTO, UPDATE or DELETE statements to modify the existing data.
 A query that uses subquery.*/
-
-/* a. What is the most common type of payment at SHI Cocina? */
-SELECT PaymentType, COUNT(*) as Popular_Payment_Method
-FROM Orders
-Group By PaymentType; 
-
-/* b. Who are the best customers based on number of visits and total amount spent?*/
-SELECT CustomerID,  
-
-/* c. Who are the best employees by amounts of orders sold?*/
-SELECT E
-
-/* d. Which employees are underperforming compared to average by orders sold? */
-SELECT
-
-/* e. Show the name of the location where the average sold of food is higher than the average sold of drinks. */
-SELECT
 =======
-/*What is the most common type of payment? */
+
+/*a. What is the most common type of payment? */
 select PaymentType, COUNT(*) as Popular_Payment_Method
 from Orders
 group by PaymentType ; 
 
-/*Which employees are underperforming compared to average by orders sold?*/
+/*b. Which employees are underperforming compared to average by orders sold? BEL*/
 
-/*Show the name of the location where the average sold of food is higher than the average sold of drinks.*/
+/*c. Show the name of the location where the average sold of food is higher than the average sold of drinks.HELENA*/
 
-/*Who are the best employees by amounts of orders sold?*/
+/*d. Who are the best employees by amounts of orders sold?SOFI*/
 
-/*Who are the best customers based on number of visits and total amount spent?*/
+/*e. Who are the best customers based on number of visits and total amount spent? BEL*/
 
 >>>>>>> origin/master
