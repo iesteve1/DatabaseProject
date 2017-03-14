@@ -97,7 +97,6 @@ INSERT INTO Customer(LastName, FirstName, Email, PhoneNumber, AddressLine1, Addr
 ('Bawa', 'Anica', 'abawa@babson.edu', 6172938456, '660 washington street', 'Apt 27F', 'Boston', 'MA', 02115, 'US'),
 ('Polonsky', 'Edu', 'epolonsky@babson.edu', 6172921956, '1 leighton street', 'Apt 1415', 'Boston', 'MA', 02141, 'US'),
 ('Sanabria', 'Roberto', 'rsanabria@babson.edu', 6172837167, '1 leighton street', 'Apt 2123', 'Boston', 'MA', 02141, 'US');
-
 GO
 
 INSERT INTO Locations(Name, AddressLine1, City, State, ZipCode, Country, StoreHours, PhoneNumber) VALUES
@@ -137,9 +136,6 @@ INSERT INTO Employees(FName, LName, EmployeeType, PhoneNumber, EMail, AddressLin
 ('Kyle', 'Bissel', 'Server', 9153457155, 'kbissel@gmail.com', '231 Forest St', 'Box #2391', 'Wellesley', 'MA', 02457, 'US', 4);
 GO
 
-<<<<<<< HEAD
-
-
 INSERT INTO Orders(CustomerID, PaymentType, EmployeeID, LocationID) VALUES
 (1, 'cash',5,6),
 (2, 'cash', 6,7),
@@ -170,8 +166,7 @@ GO
 INSERT INTO OrderMenuItem(OrderID, ItemID, Qty)VALUES
 (),
 ();
-
-Go
+GO
 
 /*Queries*/
 SELECT * FROM Customer;
