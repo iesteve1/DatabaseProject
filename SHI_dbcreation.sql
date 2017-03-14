@@ -60,7 +60,6 @@ CREATE TABLE Orders(
 	ID AS 'O' + RIGHT('00000' + CAST(OrderID AS VARCHAR(8)), 8) PERSISTED,
 	CustomerID  int NOT NULL FOREIGN KEY REFERENCES Customer(CustomerID),
 	PaymentType varchar(6),
-	AmountDue bigint NOT NULL,
 	DateOrder datetime constraint DF_DateOrder DEFAULT (getdate()),
 	EmployeeID int NOT NULL FOREIGN KEY REFERENCES Employees(EmployeeID),
 	LocationID int NOT NULL FOREIGN KEY REFERENCES Locations(LocationID)
@@ -80,8 +79,8 @@ CREATE TABLE MenuItem(
 CREATE TABLE OrdersMenuItem(
 	OrderItemID INT IDENTITY(1,1) NOT NULL PRIMARY KEY CLUSTERED,
 	ID AS 'OI' + RIGHT('00000' + CAST(OrderItemID AS VARCHAR(8)), 8) PERSISTED,
-	OrderID int NOT NULL,
-	ItemID int NOT NULL,
+	OrderID int NOT NULL FOREIGN KEY REFERENCES Orders(OrderID),
+	ItemID int NOT NULL FOREIGN KEY REFERENCES MenuItem(ItemID),
 	Qty int NOT NULL
 );
 
@@ -114,7 +113,6 @@ INSERT INTO Locations(Name, AddressLine1, City, State, ZipCode, Country, StoreHo
 ('SHI Cocina Austin', '2406 Guadalupe St', 'Austin', 'TX', 78705, 'US', 'Monday-Sunday 9am-10pm', 5124721621);
 GO
 
-/* need to add location id need to match to one of the ones that are created from the locations table*/
 INSERT INTO Employees(FName, LName, EmployeeType, PhoneNumber, EMail, AddressLine1, AddressLine2, City, State, ZipCode, Country, LocationID) VALUES
 ('Sophia','Rodriguez', 'Server', 6172157155, 'srodriguez@gmail.com', '150 Huntington Ave', 'Apt NC1', 'Boston', 'MA', 02115, 'US', 1),
 ('Isabela', 'Grasso', 'Server', 9172357155, 'igrasso@gmail.com', '145 Boylston St', 'Apt 2', 'Boston', 'MA', 02115, 'US', 2),
@@ -139,6 +137,7 @@ INSERT INTO Employees(FName, LName, EmployeeType, PhoneNumber, EMail, AddressLin
 ('Kyle', 'Bissel', 'Server', 9153457155, 'kbissel@gmail.com', '231 Forest St', 'Box #2391', 'Wellesley', 'MA', 02457, 'US', 4);
 GO
 
+<<<<<<< HEAD
 
 
 INSERT INTO Orders(CustomerID, PaymentType, EmployeeID, LocationID) VALUES
@@ -152,6 +151,29 @@ INSERT INTO Orders(CustomerID, PaymentType, EmployeeID, LocationID) VALUES
 (8, 'credit', 8,9),
 (9, 'credit',3,3),
 (3, 'cash', 9,10);
+=======
+/*INSERT INTO Orders(CustomerID, PaymentType, AmountDue, EmployeeID) VALUES
+('Cash', '32.00', '03/08/2017'),
+('Credit', '44.00', '03/08/2017'),
+('Cash', '18.00', '03/08/2017'),
+('Credit', '24.00', '03/09/2017'),
+('Cash', '28.00', '03/09/2017'),
+('Credit', '16.00', '03/09/2017'),
+('Cash', '34.00', '03/09/2017'),
+('Credit', '22.50', '03/10/2017'),
+('Cash', '45.50', '03/10/2017'),
+('Credit', '26.50', '03/10/2017'),
+('Cash', '23.00', '03/11/2017'),
+('Credit', '18.50', '03/11/2017'),
+('Cash', '19.00', '03/11/2017'),
+('Credit', '25.00', '03/11/2017'),
+('Cash', '31.50', '03/11/2017'),
+('Credit', '17.00', '03/11/2017'),
+('Cash', '18.00', '03/08/2017'),
+('Credit', '26.00', '03/09/2017'),
+('Cash', '18.50', '03/09/2017'),
+('Credit', '24.00', '03/10/2017');
+>>>>>>> origin/master
 GO
 
 
