@@ -22,6 +22,7 @@ CREATE TABLE Customer(
   ZipCode char(5),
   Country varchar(3)
   );
+
   CREATE TABLE Locations(
 LocationID INT IDENTITY(1,1) NOT NULL PRIMARY KEY CLUSTERED,
   ID AS 'L' + RIGHT('00000' + CAST(LocationID AS VARCHAR(8)), 8) PERSISTED,
@@ -38,8 +39,17 @@ AddressLine1 varchar(50),
 
 
 CREATE TABLE Employees(
+<<<<<<< HEAD
   EmployeeID INT IDENTITY(1,1) NOT NULL PRIMARY KEY CLUSTERED,
    ID AS 'E' + RIGHT('0000000' + CAST(EmployeeID AS VARCHAR(8)), 8) PERSISTED,
+=======
+  ID INT IDENTITY(1,1) NOT NULL PRIMARY KEY CLUSTERED,
+<<<<<<< HEAD
+   EmployeeID AS 'E' + RIGHT('00000000' + CAST(ID AS VARCHAR(8)), 8) PERSISTED,
+=======
+  EmployeeID AS 'E' + RIGHT('00000' + CAST(ID AS VARCHAR(8)), 8) PERSISTED,
+>>>>>>> origin/master
+>>>>>>> origin/master
   LName varchar(50) NOT NULL,
   FName varchar(50) NOT NULL,
   EmployeeType varchar(8) NOT NULL,
@@ -56,8 +66,16 @@ CREATE TABLE Employees(
 
 CREATE TABLE Orders(
 	ID INT IDENTITY(1,1) NOT NULL PRIMARY KEY CLUSTERED,
+<<<<<<< HEAD
 
 	OrderID AS 'O' + RIGHT('00000' + CAST(ID AS VARCHAR(8)), 8) PERSISTED,
+=======
+<<<<<<< HEAD
+	OrderID AS 'OID' + RIGHT('00000000' + CAST(ID AS VARCHAR(8)), 8) PERSISTED,
+=======
+  OrderID AS 'O' + RIGHT('00000' + CAST(ID AS VARCHAR(8)), 8) PERSISTED,
+>>>>>>> origin/master
+>>>>>>> origin/master
 	CustomerID  int NOT NULL FOREIGN KEY REFERENCES Customer(CustomerID),
 	PaymentType varchar(6),
 	AmountDue bigint NOT NULL,
@@ -65,6 +83,7 @@ CREATE TABLE Orders(
 	EmployeeID int NOT NULL FOREIGN KEY REFERENCES Employees(EmployeeID),
 	LocationID int NOT NULL FOREIGN KEY REFERENCES Locations(LocationID)
 );
+  
 
 CREATE TABLE MenuItem(
 ID INT IDENTITY(1,1) NOT NULL PRIMARY KEY CLUSTERED,
@@ -82,8 +101,13 @@ CREATE TABLE OrdersMenuItem(
 );
 
 -- Insert data we need min 10 rows!
+<<<<<<< HEAD
 
 
+=======
+<<<<<<< HEAD
+=======
+>>>>>>> origin/master
 INSERT INTO Customer(LastName, FirstName, Email, PhoneNumber, AddressLine1, AddressLine2, City, State, ZipCode, Country) VALUES 
 ('Hernandez', 'Helena', 'hhernandez@babson.edu', 7868791449, '1 leighton street', 'apt 1607', 'Cambridge', 'MA', 02141, 'US'),
 ('Esteve', 'Isabel', 'iesteve@babson.edu', 6178347155, '150 Huntington Ave', 'Apt NB3', 'Boston', 'MA', 02115, 'US'),
@@ -95,6 +119,12 @@ INSERT INTO Customer(LastName, FirstName, Email, PhoneNumber, AddressLine1, Addr
 ('Bawa', 'Anica', 'abawa@babson.edu', 6172938456, '660 washington street', 'Apt 27F', 'Boston', 'MA', 02115, 'US'),
 ('Polonsky', 'Edu', 'epolonsky@babson.edu', 6172921956, '1 leighton street', 'Apt 1415', 'Boston', 'MA', 02141, 'US'),
 ('Sanabria', 'Roberto', 'rsanabria@babson.edu', 6172837167, '1 leighton street', 'Apt 2123', 'Boston', 'MA', 02141, 'US');
+<<<<<<< HEAD
+=======
+>>>>>>> origin/master
+GO
+>>>>>>> origin/master
+>>>>>>> origin/master
 
 INSERT INTO Employees(FName, LName, EmployeeType, PhoneNumber, EMail, AddressLine1, AddressLine2, City, State, ZipCode, Country) VALUES
 ('Sophia', 'Rodriguez', 'Server', 6172157155, 'srodriguez@gmail.com', '150 Huntington Ave', 'Apt NC1', 'Boston', 'MA', 02115, 'US'),
@@ -126,6 +156,7 @@ GO
 */
 GO
 
+<<<<<<< HEAD
 INSERT INTO Orders(OrderID, PaymentType, AmountDue, DateOrder, EmployeeID, LocationID) VALUES
 ('12 Walnut St', '', 'Boston', 'MA', 02156, 'US', 'Monday-Sunday 9am-10pm', 6171239871);
 
@@ -139,20 +170,43 @@ INSERT INTO Locations(Name, AddressLine1, AddressLine2, City, State, ZipCode, Co
 
 ('Store', '12 Walnut St', '', 'Boston', 'MA', 02156, 'US', 'Monday-Sunday 9am-10pm', 6171239871);
 
-
-INSERT INTO Locations(Name, AddressLine1, AddressLine2, City, State, ZipCode, Country, StoreHours, PhoneNumber) VALUES
-('Store', '12 Walnut St', '', 'Boston', 'MA', 02156, 'US', 'Monday-Sunday 9am-10pm', 6171239871),
-('Store', '101 West 15th St', '', 'New York', 'NY', 10011, 'US', 'Monday-Sunday 9am-10pm', 2123546374),
-('Store', '20 S Park St', '', 'Montclair', 'NJ', 07042, 'US', 'Monday-Sunday 9am-10pm', 9736550157),
-('Store', '271 Granby St', '', 'Norfolk', 'VA', 23510, 'US', 'Monday-Sunday 9am-10pm', 7574469240),
-('Store', '119 E Grand River Ave', '', 'East Lansing', 'MI', 48823, 'US', 'Monday-Sunday 9am-10pm', 5173243434),
-('Store', '371 King St', '', 'Charleston', 'SC', 29401, 'US', 'Monday-Sunday 9am-10pm', 8437205293),
-('Store', '7650 Melrose Ave', '', 'Los Angeles', 'CA', 90046, 'US', 'Monday-Sunday 9am-10pm', 3236533231),
-('Store', '14608 Ventura Blvd', '', 'Sherman Oaks', 'CA', 91403, 'US', 'Monday-Sunday 9am-10pm', 8187893604),
-('Store', '2735 W 7th St', '', 'Fort Worth', 'TX', 76107, 'US', 'Monday-Sunday 9am-10pm', 8173340314),
-('Store', '2406 Guadalupe St', '', 'Austin', 'TX', 78705, 'US', 'Monday-Sunday 9am-10pm', 5124721621);
+=======
+INSERT INTO Orders(PaymentType, AmountDue, DateOrder) VALUES
+('Cash', '32.00', '03/08/2017'),
+('Credit', '44.00', '03/08/2017'),
+('Cash', '18.00', '03/08/2017'),
+('Credit', '24.00', '03/09/2017'),
+('Cash', '28.00', '03/09/2017'),
+('Credit', '16.00', '03/09/2017'),
+('Cash', '34.00', '03/09/2017'),
+('Credit', '22.50', '03/10/2017'),
+('Cash', '45.50', '03/10/2017'),
+('Credit', '26.50', '03/10/2017'),
+('Cash', '23.00', '03/11/2017'),
+('Credit', '18.50', '03/11/2017'),
+('Cash', '19.00', '03/11/2017'),
+('Credit', '25.00', '03/11/2017'),
+('Cash', '31.50', '03/11/2017'),
+('Credit', '17.00', '03/11/2017'),
+('Cash', '18.00', '03/08/2017'),
+('Credit', '26.00', '03/09/2017'),
+('Cash', '18.50', '03/09/2017'),
+('Credit', '24.00', '03/10/2017'),
 GO
+>>>>>>> origin/master
 
+<<<<<<< HEAD
+INSERT INTO Locations(Name, AddressLine1, AddressLine2, City, State, ZipCode, Country, StoreHours, PhoneNumber) VALUES
+=======
+<<<<<<< HEAD
+INSERT INTO Locations(Name, AddressLine1, AddressLine2, City, State, ZipCode, Country, StoreHours, PhoneNumber) VALUES
+('Store', '12 Walnut St', '', 'Boston', 'MA', 02156, 'US', 'Monday-Sunday 9am-10pm', 6171239871);
+=======
+INSERT INTO Locations(LocationID, Name, AddressLine1, AddressLine2, City, State, ZipCode, Country, StoreHours, PhoneNumber) VALUES
+>>>>>>> origin/master
+(),
+
+<<<<<<< HEAD
 INSERT INTO MenuItem(ItemName, Ingredients, Price, Cost, ItemType) VALUES
 ('Chicken Taco', 'Chicken,tortilla,sour cream, rice, salsa, tomatoes, guacamole', 3.50, 2.00, 'food'),
 ('Steak Taco', 'Steak,tortilla,sour cream, rice, salsa, tomatoes, guacamole', 4.50, 3.00, 'food' ),
@@ -165,6 +219,14 @@ INSERT INTO MenuItem(ItemName, Ingredients, Price, Cost, ItemType) VALUES
 ('Churrito Chips', 'Puffed wheat, chili, lime, salt', 2.00, .50, 'snack'),
 ('Tin Larin', 'Wafers, peanut butter, chocolate, salt, sugar', 1.00, .40, 'snack');
 GO
+=======
+();
+>>>>>>> origin/master
+
+INSERT INTO MenuItem(ItemID, ItemName, Ingredients, Price, Cost, ItemType) VALUES
+(),
+();
+>>>>>>> origin/master
 
 /*-- Delete example: Delete the SME course
 DELETE FROM Course
