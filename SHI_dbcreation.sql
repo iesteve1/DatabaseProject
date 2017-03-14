@@ -29,11 +29,11 @@ LocationID INT IDENTITY(1,1) NOT NULL PRIMARY KEY CLUSTERED,
 Name varchar(30),
 AddressLine1 varchar(50),
  AddressLine2 varchar(20),
- City varchar(10),
+ City varchar(15),
  State varchar(10),
  ZipCode char(5),
  Country varchar(3),
- StoreHours varchar(40),
+ StoreHours varchar(80),
  PhoneNumber varchar(10) NOT NULL
 );
 
@@ -46,12 +46,12 @@ CREATE TABLE Employees(
   EmployeeType varchar(8) NOT NULL,
   Email varchar(50),
   PhoneNumber varchar(10) NOT NULL,
-  AddressLine1 varchar(50),
+  AddressLine1 varchar(50) NOT NULL,
   AddressLine2 varchar(20),
-  City varchar(10),
-  State varchar(10),
-  ZipCode char(5),
-  Country varchar(3),
+  City varchar(10) NOT NULL,
+  State varchar(10) NOT NULL,
+  ZipCode char(5) NOT NULL,
+  Country varchar(3) NOT NULL,
   LocationID int NOT NULL FOREIGN KEY REFERENCES Locations(LocationID) 
   );
 
@@ -70,16 +70,19 @@ CREATE TABLE Orders(
 CREATE TABLE MenuItem(
 	ItemID INT IDENTITY(1,1) NOT NULL PRIMARY KEY CLUSTERED,
 	ID AS 'SKU' + RIGHT('00000' + CAST(ItemID AS VARCHAR(8)), 8) PERSISTED,
-	ItemName varchar(20),
-	Ingredients varchar(50),
-	Price float(5),
-	Cost float(5),
-	ItemType varchar(10)
+	ItemName varchar(50) NOT NULL,
+	Ingredients varchar(80) NOT NULL,
+	Price float(7) NOT NULL,
+	Cost float(7),
+	ItemType varchar(10) NOT NULL
 );
 
 CREATE TABLE OrdersMenuItem(
-	OrderID int NOT NULL PRIMARY KEY REFERENCES Orders(OrderID),
-	ItemID int NOT NULL PRIMARY KEY REFERENCES MenuItem(ItemID)
+	OrderItemID INT IDENTITY(1,1) NOT NULL PRIMARY KEY CLUSTERED,
+	ID AS 'OI' + RIGHT('00000' + CAST(OrderItemID AS VARCHAR(8)), 8) PERSISTED,
+	OrderID int NOT NULL,
+	ItemID int NOT NULL,
+	Qty int NOT NULL
 );
 
 -- Insert data we need min 10 rows!
@@ -122,17 +125,18 @@ INSERT INTO Employees(FName, LName, EmployeeType, PhoneNumber, EMail, AddressLin
 ('Walter', 'Torres', 'Manager', 6173459666, 'wtorres@gmail.com', '150 Huntington Ave', 'Apt SJ9', 'Boston', 'MA', 02115, 'US');
 GO
 
-INSERT INTO Locations(Name, AddressLine1, AddressLine2, City, State, ZipCode, Country, StoreHours, PhoneNumber) VALUES
-('Store', '12 Walnut St', '', 'Boston', 'MA', 02156, 'US', 'Monday-Sunday 9am-10pm', 6171239871),
-('Store', '101 West 15th St', '', 'New York', 'NY', 10011, 'US', 'Monday-Sunday 9am-10pm', 2123546374),
-('Store', '20 S Park St', '', 'Montclair', 'NJ', 07042, 'US', 'Monday-Sunday 9am-10pm', 9736550157),
-('Store', '271 Granby St', '', 'Norfolk', 'VA', 23510, 'US', 'Monday-Sunday 9am-10pm', 7574469240),
-('Store', '119 E Grand River Ave', '', 'East Lansing', 'MI', 48823, 'US', 'Monday-Sunday 9am-10pm', 5173243434),
-('Store', '371 King St', '', 'Charleston', 'SC', 29401, 'US', 'Monday-Sunday 9am-10pm', 8437205293),
-('Store', '7650 Melrose Ave', '', 'Los Angeles', 'CA', 90046, 'US', 'Monday-Sunday 9am-10pm', 3236533231),
-('Store', '14608 Ventura Blvd', '', 'Sherman Oaks', 'CA', 91403, 'US', 'Monday-Sunday 9am-10pm', 8187893604),
-('Store', '2735 W 7th St', '', 'Fort Worth', 'TX', 76107, 'US', 'Monday-Sunday 9am-10pm', 8173340314),
-('Store', '2406 Guadalupe St', '', 'Austin', 'TX', 78705, 'US', 'Monday-Sunday 9am-10pm', 5124721621);
+INSERT INTO Locations(Name, AddressLine1, City, State, ZipCode, Country, StoreHours, PhoneNumber) VALUES
+('SHI Cocina BOS', '12 Walnut St', 'Boston', 'MA', 02156, 'US', 'Monday-Sunday 9am-10pm', 6171239871),
+('SHI Cocina NY', '101 West 15th St', 'New York', 'NY', 10011, 'US', 'Monday-Sunday 9am-10pm', 2123546374),
+('SHI Cocina NJ', '20 S Park St', 'Montclair', 'NJ', 07042, 'US', 'Monday-Sunday 9am-10pm', 9736550157),
+('SHI Cocina Norfolk', '271 Granby St',  'Norfolk', 'VA', 23510, 'US', 'Monday-Sunday 9am-10pm', 7574469240),
+('SHI Cocina East', '119 E Grand River Ave', 'East Lansing', 'MI', 48823, 'US', 'Monday-Sunday 9am-10pm', 5173243434),
+('SHI Cocina Charleston', '371 King St', 'Charleston', 'SC', 29401, 'US', 'Monday-Sunday 9am-10pm', 8437205293),
+('SHI Cocina LA', '7650 Melrose Ave', 'Los Angeles', 'CA', 90046, 'US', 'Monday-Sunday 9am-10pm', 3236533231),
+('SHI Cocina Oaks', '14608 Ventura Blvd', 'Sherman Oaks', 'CA', 91403, 'US', 'Monday-Sunday 9am-10pm', 8187893604),
+('SHI Cocina Dallas', '2735 W 7th St', 'Fort Worth', 'TX', 76107, 'US', 'Monday-Sunday 9am-10pm', 8173340314),
+('SHI Cocina Austin', '2406 Guadalupe St', 'Austin', 'TX', 78705, 'US', 'Monday-Sunday 9am-10pm', 5124721621);
+GO
 
 /*INSERT INTO Orders(CustomerID, PaymentType, AmountDue, EmployeeID, LocationID) VALUES
 ('Cash', '32.00', '03/08/2017'),
@@ -164,13 +168,19 @@ INSERT INTO MenuItem(ItemName, Ingredients, Price, Cost, ItemType) VALUES
 ('Shrimp Taco', 'Shrimp,tortilla,sour cream, rice, salsa, tomatoes, guacamole', 3.50, 2.00, 'food' ),
 ('Chicken Burrito', 'Chicken,tortilla,sour cream, rice, salsa, tomatoes, beans, lettuce, guacamole', 6.50, 4.00, 'food'),
 ('Steak Burrito', 'Steak,tortilla,sour cream, rice, salsa, tomatoes, beans, lettuce, guacamole', 7.50, 4.50, 'food'),
-('Mexican Coke', 'Carbonated water, sugar, caramel color, phosphoric acid, natural flavors, caffeine', 2.50, 1.00, 'drink'),
+('Mexican Coke', 'Carbonated water, sugar, color, phosphoric acid, natural flavors, caffeine', 2.50, 1.00, 'drink'),
 ('Jarritos', 'Fruit flavor, Carbonated water, sugar, phosphoric acid, natural flavors, ', 1.50, .50, 'drink'),
 ('Chili Lolipops', 'Fruit flavor, lemon juice, salt, chili, sugar', 1.00, .30, 'snack'),
 ('Churrito Chips', 'Puffed wheat, chili, lime, salt', 2.00, .50, 'snack'),
 ('Tin Larin', 'Wafers, peanut butter, chocolate, salt, sugar', 1.00, .40, 'snack');
+
 GO
 
+INSERT INTO OrderMenuItem(OrderID, ItemID, Qty)VALUES
+(),
+();
+
+Go
 
 /*Queries*/
 SELECT * FROM Customer;
