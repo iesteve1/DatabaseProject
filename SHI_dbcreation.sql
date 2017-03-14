@@ -199,6 +199,7 @@ SELECT * FROM Locations;
 SELECT * FROM MenuItem;
 SELECT * FROM OrdersMenuItem;
 
+<<<<<<< HEAD
 
 /* DONE - Multiple SELECT * queries to display all the records from each table. (Suppose the database has 4 tables, you should create 4 queries for this requirement.)
    DONE - A query that uses aggregate function.
@@ -222,3 +223,18 @@ SELECT
 
 /* e. Show the name of the location where the average sold of food is higher than the average sold of drinks. */
 SELECT
+=======
+/*What is the most common type of payment? */
+select PaymentType, COUNT(*) as Popular_Payment_Method
+from Orders
+group by PaymentType ; 
+
+/*Which employees are underperforming compared to average by orders sold?*/
+
+/*Show the name of the location where the average sold of food is higher than the average sold of drinks.*/
+
+/*Who are the best employees by amounts of orders sold?*/
+
+/*Who are the best customers based on number of visits and total amount spent?*/
+
+>>>>>>> origin/master
