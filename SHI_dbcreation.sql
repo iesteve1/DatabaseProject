@@ -199,14 +199,6 @@ SELECT * FROM Locations;
 SELECT * FROM MenuItem;
 SELECT * FROM OrdersMenuItem;
 
-<<<<<<< HEAD
-
-/* DONE - Multiple SELECT * queries to display all the records from each table. (Suppose the database has 4 tables, you should create 4 queries for this requirement.)
-   DONE - A query that uses aggregate function.
-A query that selects records from two (or multiple) tables using INNER JOIN.
-A query that selects records from two (or multiple) tables using LEFT OUTER JOIN (or RIGHT OUTER JOIN or FULL OUTER JOIN). Specify why outer join is neccesary in comment block. Make sure your fake data could reflect the necessary. If it could not, you need to go back to part 2 to redo the data insertion, or you can use INSERT INTO, UPDATE or DELETE statements to modify the existing data.
-A query that uses subquery.*/
-=======
 
 /*a. What is the most common type of payment? */
 select PaymentType, COUNT(*) as Popular_Payment_Method
@@ -214,6 +206,16 @@ from Orders
 group by PaymentType ; 
 
 /*Which employees are underperforming compared to average by orders sold? Bel*/
+SELECT 
+	a.CustomerID, 
+	a.FirstName,
+	a.LastName,
+	b. count(OrderID) as Total_Number_of_Visits, /*(This has to be count of times customer has come to the restaurant)*/
+	b. sum(AmountDue) as Total_Amount_Spent
+FROM Customer as a
+JOIN Orders as b
+on a.CustomerID = b.CustomerID
+Order By sum(AmountDue) DESC;
 
 /*Show the name of the location where the average sold of food is higher than the average sold of drinks. Sofi*/ 
 SELECT l.Name
