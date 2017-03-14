@@ -43,12 +43,12 @@ CREATE TABLE Employees(
    ID AS 'E' + RIGHT('0000000' + CAST(EmployeeID AS VARCHAR(8)), 8) PERSISTED,
   LName varchar(50) NOT NULL,
   FName varchar(50) NOT NULL,
-  EmployeeType varchar(8) NOT NULL,
+  EmployeeType varchar(10) NOT NULL,
   Email varchar(50),
   PhoneNumber varchar(10) NOT NULL,
   AddressLine1 varchar(50) NOT NULL,
   AddressLine2 varchar(20),
-  City varchar(10) NOT NULL,
+  City varchar(20) NOT NULL,
   State varchar(10) NOT NULL,
   ZipCode char(5) NOT NULL,
   Country varchar(3) NOT NULL,
@@ -105,8 +105,7 @@ GO
 INSERT INTO Employees(FName, LName, EmployeeType, PhoneNumber, EMail, AddressLine1, AddressLine2, City, State, ZipCode, Country, LocationID) VALUES
 ('Sophia','Rodriguez', 'Server', 6172157155, 'srodriguez@gmail.com', '150 Huntington Ave', 'Apt NC1', 'Boston', 'MA', 02115, 'US', 1),
 ('Isabela', 'Grasso', 'Server', 9172357155, 'igrasso@gmail.com', '145 Boylston St', 'Apt 2', 'Boston', 'MA', 02115, 'US', 2),
-('Alexander', 'Yang', 'Server', 6172348734, 'ayang@gmail.com', '15 Newbury St', 'Apt 5a', 'Boston', 'MA', 02115, 'US', 3,
-('Kyle', 'Bissel', 'Server', 9153457155, 'kbissel@gmail.com', '231 Forest St', 'Box #2391', 'Wellesley', 'MA', 02457, 'US', 4),
+('Alexander', 'Yang', 'Server', 6172348734, 'ayang@gmail.com', '15 Newbury St', 'Apt 5a', 'Boston', 'MA', 02115, 'US', 3) ,
 ('John', 'Sawyer', 'Server', 6172353455, 'jsawyer@gmail.com', '19 Boylston St', 'Apt 2', 'Jamaica Plain', 'MA', 02130, 'US', 5),
 ('Emily', 'Cerra', 'Server', 6171112465, 'ecerra@gmail.com', '19 Boylston St', 'Apt 6', 'Jamaica Plain', 'MA', 02130, 'US', 6),
 ('Emily', 'Mayer', 'Server', 9171122465, 'emayer@gmail.com', '231 Forest St', 'Box #4321', 'Wellesley', 'MA', 02457, 'US', 7),
@@ -122,7 +121,8 @@ INSERT INTO Employees(FName, LName, EmployeeType, PhoneNumber, EMail, AddressLin
 ('Luis', 'Esteve', 'Manager', 6176786666, 'lesteve@gmail.com', '231 Forest St', 'Box #5631', 'Wellesley', 'MA', 02457, 'US', 7),
 ('Alejandro', 'Cameo', 'Manager', 6934586666, 'acameo@gmail.com', '150 Huntington Ave', 'Apt SB2', 'Boston', 'MA', 02115, 'US', 8),
 ('Sofia', 'Castro', 'Manager', 6934583456, 'scastro@gmail.com', '150 Huntington Ave', 'Apt SG8', 'Boston', 'MA', 02115, 'US', 9),
-('Walter', 'Torres', 'Manager', 6173459666, 'wtorres@gmail.com', '150 Huntington Ave', 'Apt SJ9', 'Boston', 'MA', 02115, 'US', 10);
+('Walter', 'Torres', 'Manager', 6173459666, 'wtorres@gmail.com', '150 Huntington Ave', 'Apt SJ9', 'Boston', 'MA', 02115, 'US', 10),
+('Kyle', 'Bissel', 'Server', 9153457155, 'kbissel@gmail.com', '231 Forest St', 'Box #2391', 'Wellesley', 'MA', 02457, 'US', 4);
 GO
 
 INSERT INTO Locations(Name, AddressLine1, City, State, ZipCode, Country, StoreHours, PhoneNumber) VALUES
