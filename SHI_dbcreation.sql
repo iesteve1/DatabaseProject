@@ -213,30 +213,18 @@ select PaymentType, COUNT(*) as Popular_Payment_Method
 from Orders
 group by PaymentType ; 
 
-<<<<<<< HEAD
 /*Which employees are underperforming compared to average by orders sold? Bel*/
 
 /*Show the name of the location where the average sold of food is higher than the average sold of drinks. Sofi*/ 
 SELECT l.Name
-FROM Locations as l inner join Orders as o on l.LocationID = o.LocationID right join OrdersMenuItem as t on o.OrderID= t.OrderID
+/*TRYING STUFF OUT!! Getting into problem when we add OrdersMenu tableFROM Locations as l inner join Orders as o on l.LocationID = o.LocationID right join OrdersMenuItem as t on o.OrderID= t.OrderID
 
-FROM MenuItem as i right outer join OrdersMenuItem as t on i.ItemID= t.ItemID  inner join Orders as o on o.OrderID = t.OrderID  full join Locations as l on l.LocationID = o.LocationID
+FROM MenuItem as i right outer join OrdersMenuItem as t on i.ItemID= t.ItemID  inner join Orders as o on o.OrderID = t.OrderID  full join Locations as l on l.LocationID = o.LocationID*/ 
 
 /*Who are the best 3 employees by amounts of orders sold? Helena*/
 SELECT TOP 3 e.EmployeeID, e.FName, e.LName, e.LocationID, SUM(o.AmountDue) as Total_$_Sold
 FROM Employees as e inner join Orders as o on e.EmployeeID = o.EmployeeID
 GROUP BY e.EmployeeID, e.FName, e.LName, e.LocationID
-ORDER BY SUM(o.AmountDue) DESC
+ORDER BY SUM(o.AmountDue) DESC;
 
-/*Who are the best customers based on number of visits and total amount spent? Bel*/
-=======
-/*b. Which employees are underperforming compared to average by orders sold? BEL*/
 
-/*c. Show the name of the location where the average sold of food is higher than the average sold of drinks.HELENA*/
-
-/*d. Who are the best employees by amounts of orders sold?SOFI*/
-
-/*e. Who are the best customers based on number of visits and total amount spent? BEL*/
->>>>>>> origin/master
-
->>>>>>> origin/master
