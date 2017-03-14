@@ -103,26 +103,26 @@ GO
 
 /* need to add location id need to match to one of the ones that are created from the locations table*/
 INSERT INTO Employees(FName, LName, EmployeeType, PhoneNumber, EMail, AddressLine1, AddressLine2, City, State, ZipCode, Country, LocationID) VALUES
-('Sophia', 'Rodriguez', 'Server', 6172157155, 'srodriguez@gmail.com', '150 Huntington Ave', 'Apt NC1', 'Boston', 'MA', 02115, 'US'),
-('Isabela', 'Grasso', 'Server', 9172357155, 'igrasso@gmail.com', '145 Boylston St', 'Apt 2', 'Boston', 'MA', 02115, 'US'),
-('Alexander', 'Yang', 'Server', 6172348734, 'ayang@gmail.com', '15 Newbury St', 'Apt 5a', 'Boston', 'MA', 02115, 'US'),
-('Kyle', 'Bissel', 'Server', 9153457155, 'kbissel@gmail.com', '231 Forest St', 'Box #2391', 'Wellesley', 'MA', 02457, 'US'),
-('John', 'Sawyer', 'Server', 6172353455, 'jsawyer@gmail.com', '19 Boylston St', 'Apt 2', 'Jamaica Plain', 'MA', 02130, 'US'),
-('Emily', 'Cerra', 'Server', 6171112465, 'ecerra@gmail.com', '19 Boylston St', 'Apt 6', 'Jamaica Plain', 'MA', 02130, 'US'),
-('Emily', 'Mayer', 'Server', 9171122465, 'emayer@gmail.com', '231 Forest St', 'Box #4321', 'Wellesley', 'MA', 02457, 'US'),
-('Alvaro', 'Rossi', 'Server', 9172345465, 'erossi@gmail.com', '1 leighton street', 'Apt 1703', 'Cambridge', 'MA', 02141, 'US'),
-('Manuella', 'Macedo', 'Server', 6172346666, 'mmacedo@gmail.com', '22 Boylston St', 'Apt 4', 'Jamaica Plain', 'MA', 02130, 'US'),
-('Luke', 'Rocker', 'Server', 6175556666, 'lrocker@gmail.com', '231 Forest St', 'Box #5431', 'Wellesley', 'MA', 02457, 'US'),
-('Elisa', 'Leao', 'Manager', 6171112465, 'eleao@gmail.com', '19 Boylston St', 'Apt 6', 'Jamaica Plain', 'MA', 02130, 'US'),
-('Joanna', 'Benadrette', 'Manager', 6173332465, 'jbenadrette@gmail.com', '1 leighton street', 'Apt 1801', 'Cambridge', 'MA', 02141, 'US'),
-('Joseph', 'Grand', 'Manager', 6173337171, 'jgrand@gmail.com', '1 leighton street', 'Apt 1901', 'Cambridge', 'MA', 02141, 'US'),
-('James', 'Gordon', 'Manager', 6177647171, 'jgordon@gmail.com', '1 leighton street', 'Apt 2345', 'Cambridge', 'MA', 02141, 'US'),
-('Melissa', 'McCarthy', 'Manager', 9343332465, 'mccarthy@gmail.com', '22 Boylston St', 'Apt 9', 'Jamaica Plain', 'MA', 02130, 'US'),
-('Rebecca', 'Monroe', 'Manager', 9349854465, 'rmonroe@gmail.com', '26 Boylston St', 'Apt 2a', 'Jamaica Plain', 'MA', 02130, 'US'),
-('Luis', 'Esteve', 'Manager', 6176786666, 'lesteve@gmail.com', '231 Forest St', 'Box #5631', 'Wellesley', 'MA', 02457, 'US'),
-('Alejandro', 'Cameo', 'Manager', 6934586666, 'acameo@gmail.com', '150 Huntington Ave', 'Apt SB2', 'Boston', 'MA', 02115, 'US'),
-('Sofia', 'Castro', 'Manager', 6934583456, 'scastro@gmail.com', '150 Huntington Ave', 'Apt SG8', 'Boston', 'MA', 02115, 'US'),
-('Walter', 'Torres', 'Manager', 6173459666, 'wtorres@gmail.com', '150 Huntington Ave', 'Apt SJ9', 'Boston', 'MA', 02115, 'US');
+('Sophia','Rodriguez', 'Server', 6172157155, 'srodriguez@gmail.com', '150 Huntington Ave', 'Apt NC1', 'Boston', 'MA', 02115, 'US', 1),
+('Isabela', 'Grasso', 'Server', 9172357155, 'igrasso@gmail.com', '145 Boylston St', 'Apt 2', 'Boston', 'MA', 02115, 'US', 2),
+('Alexander', 'Yang', 'Server', 6172348734, 'ayang@gmail.com', '15 Newbury St', 'Apt 5a', 'Boston', 'MA', 02115, 'US', 3,
+('Kyle', 'Bissel', 'Server', 9153457155, 'kbissel@gmail.com', '231 Forest St', 'Box #2391', 'Wellesley', 'MA', 02457, 'US', 4),
+('John', 'Sawyer', 'Server', 6172353455, 'jsawyer@gmail.com', '19 Boylston St', 'Apt 2', 'Jamaica Plain', 'MA', 02130, 'US', 5),
+('Emily', 'Cerra', 'Server', 6171112465, 'ecerra@gmail.com', '19 Boylston St', 'Apt 6', 'Jamaica Plain', 'MA', 02130, 'US', 6),
+('Emily', 'Mayer', 'Server', 9171122465, 'emayer@gmail.com', '231 Forest St', 'Box #4321', 'Wellesley', 'MA', 02457, 'US', 7),
+('Alvaro', 'Rossi', 'Server', 9172345465, 'erossi@gmail.com', '1 leighton street', 'Apt 1703', 'Cambridge', 'MA', 02141, 'US', 8),
+('Manuella', 'Macedo', 'Server', 6172346666, 'mmacedo@gmail.com', '22 Boylston St', 'Apt 4', 'Jamaica Plain', 'MA', 02130, 'US', 9),
+('Luke', 'Rocker', 'Server', 6175556666, 'lrocker@gmail.com', '231 Forest St', 'Box #5431', 'Wellesley', 'MA', 02457, 'US', 10),
+('Elisa', 'Leao', 'Manager', 6171112465, 'eleao@gmail.com', '19 Boylston St', 'Apt 6', 'Jamaica Plain', 'MA', 02130, 'US', 1),
+('Joanna', 'Benadrette', 'Manager', 6173332465, 'jbenadrette@gmail.com', '1 leighton street', 'Apt 1801', 'Cambridge', 'MA', 02141, 'US', 2),
+('Joseph', 'Grand', 'Manager', 6173337171, 'jgrand@gmail.com', '1 leighton street', 'Apt 1901', 'Cambridge', 'MA', 02141, 'US', 3),
+('James', 'Gordon', 'Manager', 6177647171, 'jgordon@gmail.com', '1 leighton street', 'Apt 2345', 'Cambridge', 'MA', 02141, 'US', 4),
+('Melissa', 'McCarthy', 'Manager', 9343332465, 'mccarthy@gmail.com', '22 Boylston St', 'Apt 9', 'Jamaica Plain', 'MA', 02130, 'US', 5),
+('Rebecca', 'Monroe', 'Manager', 9349854465, 'rmonroe@gmail.com', '26 Boylston St', 'Apt 2a', 'Jamaica Plain', 'MA', 02130, 'US', 6),
+('Luis', 'Esteve', 'Manager', 6176786666, 'lesteve@gmail.com', '231 Forest St', 'Box #5631', 'Wellesley', 'MA', 02457, 'US', 7),
+('Alejandro', 'Cameo', 'Manager', 6934586666, 'acameo@gmail.com', '150 Huntington Ave', 'Apt SB2', 'Boston', 'MA', 02115, 'US', 8),
+('Sofia', 'Castro', 'Manager', 6934583456, 'scastro@gmail.com', '150 Huntington Ave', 'Apt SG8', 'Boston', 'MA', 02115, 'US', 9),
+('Walter', 'Torres', 'Manager', 6173459666, 'wtorres@gmail.com', '150 Huntington Ave', 'Apt SJ9', 'Boston', 'MA', 02115, 'US', 10);
 GO
 
 INSERT INTO Locations(Name, AddressLine1, City, State, ZipCode, Country, StoreHours, PhoneNumber) VALUES
