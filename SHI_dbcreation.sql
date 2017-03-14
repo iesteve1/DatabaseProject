@@ -9,11 +9,11 @@ GO
 
 -- Create the customer and order tables
 CREATE TABLE Customer(
-  ID INT IDENTITY(1,1) NOT NULL PRIMARY KEY CLUSTERED,
-  CustomerID AS 'C' + RIGHT('00000' + CAST(ID AS VARCHAR(8)), 8) PERSISTED,
+  CustomerID INT IDENTITY(1,1) NOT NULL PRIMARY KEY CLUSTERED,
+  ID AS 'C' + RIGHT('00000' + CAST(CustomerID AS VARCHAR(8)), 8) PERSISTED,
   LastName varchar(50) NOT NULL,
   FirstName varchar(50) NOT NULL,
-  Email varchar(15),
+  Email varchar(50),
   PhoneNumber varchar(10) NOT NULL,
   AddressLine1 varchar(50),
   AddressLine2 varchar(20),
@@ -23,8 +23,8 @@ CREATE TABLE Customer(
   Country varchar(3)
   );
   CREATE TABLE Locations(
-ID INT IDENTITY(1,1) NOT NULL PRIMARY KEY CLUSTERED,
-  LocationID AS 'L' + RIGHT('00000' + CAST(ID AS VARCHAR(8)), 8) PERSISTED,
+LocationID INT IDENTITY(1,1) NOT NULL PRIMARY KEY CLUSTERED,
+  ID AS 'L' + RIGHT('00000' + CAST(LocationID AS VARCHAR(8)), 8) PERSISTED,
 Name varchar(30),
 AddressLine1 varchar(50),
  AddressLine2 varchar(20),
@@ -38,8 +38,8 @@ AddressLine1 varchar(50),
 
 
 CREATE TABLE Employees(
-  ID INT IDENTITY(1,1) NOT NULL PRIMARY KEY CLUSTERED,
-   EmployeeID AS 'E' + RIGHT('0000000' + CAST(ID AS VARCHAR(8)), 8) PERSISTED,
+  EmployeeID INT IDENTITY(1,1) NOT NULL PRIMARY KEY CLUSTERED,
+   ID AS 'E' + RIGHT('0000000' + CAST(EmployeeID AS VARCHAR(8)), 8) PERSISTED,
   LName varchar(50) NOT NULL,
   FName varchar(50) NOT NULL,
   EmployeeType varchar(8) NOT NULL,
@@ -83,12 +83,9 @@ CREATE TABLE OrdersMenuItem(
 
 -- Insert data we need min 10 rows!
 
-INSERT INTO Customer (LastName, FirstName, Email, PhoneNumber, AddressLine1, AddressLine2, City, State, ZipCode, Country) VALUES 
-('Hernandez', 'Helena', 'NA', 7868791449, '1 leighton street', 'apt 1607', 'cambrdige', 'MA', 02141, 'US'),
-('Esteve', 'Isabel', 'NA', 6178347155, '150 Huntington Ave', 'Apt NB3', 'Boston', 'MA', 02115, 'US'); 
 
 INSERT INTO Customer(LastName, FirstName, Email, PhoneNumber, AddressLine1, AddressLine2, City, State, ZipCode, Country) VALUES 
-('Hernandez', 'Helena', 'hhernandez@babson.edu', 7868791449, '1 leighton street', 'apt 1607', 'cambrdige', 'MA', 02141, 'US'),
+('Hernandez', 'Helena', 'hhernandez@babson.edu', 7868791449, '1 leighton street', 'apt 1607', 'Cambridge', 'MA', 02141, 'US'),
 ('Esteve', 'Isabel', 'iesteve@babson.edu', 6178347155, '150 Huntington Ave', 'Apt NB3', 'Boston', 'MA', 02115, 'US'),
 ('Cajigas', 'Alexis', 'acajigas@babson.edu', 305569304, '234 los pinos circle', 'NA', 'Miami', 'FL', 33423, 'US'),
 ('DiCapua', 'Lydia', 'ldicapua@babson.edu', 6172345678, '150 Huntington Ave', 'Apt KB4', 'Boston', 'MA', 02115, 'US'),
@@ -137,14 +134,12 @@ INSERT INTO Orders(OrderID, PaymentType, AmountDue, DateOrder, EmployeeID, Locat
 INSERT INTO Locations(Name, AddressLine1, AddressLine2, City, State, ZipCode, Country, StoreHours, PhoneNumber) VALUES
 ('Store 1'),
 
-=======
 
 INSERT INTO Locations(Name, AddressLine1, AddressLine2, City, State, ZipCode, Country, StoreHours, PhoneNumber) VALUES
 
 ('Store', '12 Walnut St', '', 'Boston', 'MA', 02156, 'US', 'Monday-Sunday 9am-10pm', 6171239871);
 
 
-=======
 INSERT INTO Locations(Name, AddressLine1, AddressLine2, City, State, ZipCode, Country, StoreHours, PhoneNumber) VALUES
 ('Store', '12 Walnut St', '', 'Boston', 'MA', 02156, 'US', 'Monday-Sunday 9am-10pm', 6171239871),
 ('Store', '101 West 15th St', '', 'New York', 'NY', 10011, 'US', 'Monday-Sunday 9am-10pm', 2123546374),
@@ -157,8 +152,6 @@ INSERT INTO Locations(Name, AddressLine1, AddressLine2, City, State, ZipCode, Co
 ('Store', '2735 W 7th St', '', 'Fort Worth', 'TX', 76107, 'US', 'Monday-Sunday 9am-10pm', 8173340314),
 ('Store', '2406 Guadalupe St', '', 'Austin', 'TX', 78705, 'US', 'Monday-Sunday 9am-10pm', 5124721621);
 GO
->>>>>>> origin/master
-
 
 INSERT INTO MenuItem(ItemName, Ingredients, Price, Cost, ItemType) VALUES
 ('Chicken Taco', 'Chicken,tortilla,sour cream, rice, salsa, tomatoes, guacamole', 3.50, 2.00, 'food'),
