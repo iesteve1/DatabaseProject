@@ -138,7 +138,7 @@ INSERT INTO Locations(Name, AddressLine1, City, State, ZipCode, Country, StoreHo
 ('SHI Cocina Austin', '2406 Guadalupe St', 'Austin', 'TX', 78705, 'US', 'Monday-Sunday 9am-10pm', 5124721621);
 GO
 
-/*INSERT INTO Orders(CustomerID, PaymentType, AmountDue, EmployeeID, LocationID) VALUES
+/*INSERT INTO Orders(CustomerID, PaymentType, AmountDue, EmployeeID) VALUES
 ('Cash', '32.00', '03/08/2017'),
 ('Credit', '44.00', '03/08/2017'),
 ('Cash', '18.00', '03/08/2017'),
