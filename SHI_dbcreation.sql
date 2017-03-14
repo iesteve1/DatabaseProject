@@ -141,29 +141,19 @@ GO
 
 
 
-/*INSERT INTO Orders(CustomerID, PaymentType, AmountDue, EmployeeID) VALUES
-('Cash', '32.00', '03/08/2017'),
-('Credit', '44.00', '03/08/2017'),
-('Cash', '18.00', '03/08/2017'),
-('Credit', '24.00', '03/09/2017'),
-('Cash', '28.00', '03/09/2017'),
-('Credit', '16.00', '03/09/2017'),
-('Cash', '34.00', '03/09/2017'),
-('Credit', '22.50', '03/10/2017'),
-('Cash', '45.50', '03/10/2017'),
-('Credit', '26.50', '03/10/2017'),
-('Cash', '23.00', '03/11/2017'),
-('Credit', '18.50', '03/11/2017'),
-('Cash', '19.00', '03/11/2017'),
-('Credit', '25.00', '03/11/2017'),
-('Cash', '31.50', '03/11/2017'),
-('Credit', '17.00', '03/11/2017'),
-('Cash', '18.00', '03/08/2017'),
-('Credit', '26.00', '03/09/2017'),
-('Cash', '18.50', '03/09/2017'),
-('Credit', '24.00', '03/10/2017');
+INSERT INTO Orders(CustomerID, PaymentType, EmployeeID, LocationID) VALUES
+(1, 'cash',5,6),
+(2, 'cash', 6,7),
+(3, 'cash',20,4),
+(4, 'cash',1,1),
+(5, 'credit',4,5),
+(6, 'credit', 7,8),
+(7, 'credit',2,2),
+(8, 'credit', 8,9),
+(9, 'credit',3,3),
+(3, 'cash', 9,10);
 GO
-*/
+
 
 INSERT INTO MenuItem(ItemName, Ingredients, Price, Cost, ItemType) VALUES
 ('Chicken Taco', 'Chicken,tortilla,sour cream, rice, salsa, tomatoes, guacamole', 3.50, 2.00, 'food'),
