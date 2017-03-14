@@ -160,7 +160,6 @@ INSERT INTO MenuItem(ItemName, Ingredients, Price, Cost, ItemType) VALUES
 ('Chili Lolipops', 'Fruit flavor, lemon juice, salt, chili, sugar', 1.00, .30, 'snack'),
 ('Churrito Chips', 'Puffed wheat, chili, lime, salt', 2.00, .50, 'snack'),
 ('Tin Larin', 'Wafers, peanut butter, chocolate, salt, sugar', 1.00, .40, 'snack');
-
 GO
 
 INSERT INTO OrderMenuItem(OrderID, ItemID, Qty)VALUES
@@ -169,9 +168,15 @@ INSERT INTO OrderMenuItem(OrderID, ItemID, Qty)VALUES
 GO
 
 /*Queries*/
+
 SELECT * FROM Customer;
 SELECT * FROM Employees;
 SELECT * FROM Orders;
 SELECT * FROM Locations;
 SELECT * FROM MenuItem;
 SELECT * FROM OrdersMenuItem;
+
+/*What is the most common type of payment? */
+select PaymentType, COUNT(*) as Popular_Payment_Method
+from Orders
+group by PaymentType ; 
