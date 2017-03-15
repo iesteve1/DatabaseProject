@@ -190,6 +190,7 @@ INSERT INTO OrdersMenuItem(OrderID, ItemID, Qty)VALUES
 (10,5,2);
 GO
 
+
 /*Queries*/
 
 SELECT * FROM Customer;
@@ -217,16 +218,16 @@ JOIN Orders as b
 on a.CustomerID = b.CustomerID
 Order By sum(AmountDue) DESC;
 
-/*Show the name of the location where the average sold of food is higher than the average sold of drinks. Sofi*/ 
-SELECT l.Name
-/*TRYING STUFF OUT!! Getting into problem when we add OrdersMenu tableFROM Locations as l inner join Orders as o on l.LocationID = o.LocationID right join OrdersMenuItem as t on o.OrderID= t.OrderID
-
-FROM MenuItem as i right outer join OrdersMenuItem as t on i.ItemID= t.ItemID  inner join Orders as o on o.OrderID = t.OrderID  full join Locations as l on l.LocationID = o.LocationID*/ 
+/* NEEDS WORKShow the name of the location where the average sold of food is higher than the average sold of drinks. Sofi*/ 
+/*this gives us both averages one for drink and one for food so i think it would be subquery*/
+SELECT m.ItemType, AVG(o.AmountDue) as Avergae_Amount_Due
+FROM Locations as l inner join Orders as o on l.LocationID = o.LocationID right join OrdersMenuItem as t on o.OrderID= t.OrderID inner join MenuItem as m on t.ItemID = m.ItemID
+WHERE m.ItemType = 'drink' or m.ItemType = 'food'
+GROUP BY m.ItemType;
 
 /*Who are the best 3 employees by amounts of orders sold? Helena*/
 SELECT TOP 3 e.EmployeeID, e.FName, e.LName, e.LocationID, SUM(o.AmountDue) as Total_$_Sold
 FROM Employees as e inner join Orders as o on e.EmployeeID = o.EmployeeID
 GROUP BY e.EmployeeID, e.FName, e.LName, e.LocationID
 ORDER BY SUM(o.AmountDue) DESC;
-
 
