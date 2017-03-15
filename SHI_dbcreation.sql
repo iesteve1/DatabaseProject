@@ -219,11 +219,21 @@ on a.CustomerID = b.CustomerID
 Order By sum(AmountDue) DESC;
 
 /* NEEDS WORKShow the name of the location where the average sold of food is higher than the average sold of drinks. Sofi*/ 
-/*this gives us both averages one for drink and one for food so i think it would be subquery*/
-SELECT m.ItemType, AVG(o.AmountDue) as Avergae_Amount_Due
+/*this gives us both averages for each store, we should probably change this query because its comparing the averages of each store OR need an average if its drink for store name and average if its food for store name and thne compare them; so maybe we can slightly change the query to be: Show the name of the location where the average sold of food and drink is higher than the company average.*/
+SELECT l.Name, m.ItemType, AVG(o.AmountDue) as Avergae_Amount_Due
 FROM Locations as l inner join Orders as o on l.LocationID = o.LocationID right join OrdersMenuItem as t on o.OrderID= t.OrderID inner join MenuItem as m on t.ItemID = m.ItemID
-WHERE m.ItemType = 'drink' or m.ItemType = 'food'
-GROUP BY m.ItemType;
+GROUP BY l.Name, m.ItemType
+ORDER BY l.Name;
+/*Select 
+IFF (Related_Period_ID = 1, 
+        (Select 
+            AVG(Costs_Per_Capita)
+            From Costs_Per_Capita_Table
+            Where Related_Period_ID = 1),
+       (Select
+            AVG(Costs_Per_Capita)
+            From Costs_Per_Capita_Table
+            Where Related_Period_ID = 2)*/
 
 /*Who are the best 3 employees by amounts of orders sold? Helena*/
 SELECT TOP 3 e.EmployeeID, e.FName, e.LName, e.LocationID, SUM(o.AmountDue) as Total_$_Sold
