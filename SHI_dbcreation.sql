@@ -208,7 +208,9 @@ group by PaymentType ;
 
 /*Show the name of the location where the average sold of food is higher than the average sold of drinks.*/
 
-/*Who are the best employees by amounts of orders sold?*/
+
+/*Who are the best employees by amounts of orders sold? */
+
 
 /*Who are the best customers based on number of visits and total amount spent?*/
 
