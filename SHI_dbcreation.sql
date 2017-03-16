@@ -208,15 +208,21 @@ group by PaymentType ;
 
 /*Which employees are underperforming compared to average by orders sold?*/
 
-<<<<<<< HEAD
 /*Show the name of the location where the average sold of food is higher than the average sold of drinks.*/
 
 
 /*Who are the best employees by amounts of orders sold? */
 
+/* Write a query to display the Customer ID, First Name and Last Name of all customers and the Quantity of items they ordered in each of their orders.*/
+SELECT a.CustomerID, b.FirstName as First_Name, b.LastName as Last_Name, c.Qty as Quantity 
+FROM Orders as a 
+LEFT JOIN Customer as b
+ON a.CustomerID = b.CustomerID
+FULL OUTER JOIN OrdersMenuItem as c
+ON a.OrderID=c.OrderID;
 
-=======
->>>>>>> origin/master
+/* Outer join is used because we wanted to get a union of the data. This query gave me the name of all the customers in union with the quantity of items that they ordered. Essentially it combined the informtion prevenelant in the ordermenuitem table and in the customer table that was being asked for.*/
+
 /*Who are the best customers based on number of visits and total amount spent?*/
 SELECT 
 	a.CustomerID, 
@@ -230,6 +236,7 @@ on a.CustomerID = b.CustomerID
 Order By sum(AmountDue) DESC;
 
 /* NEEDS WORK Show the name of the location where the average sold of food is higher than the average sold of drinks.*/ 
+
 /*this gives us both averages for each store, we should probably change this query because its comparing the averages of each store OR need an average if its drink for store name and average if its food for store name and thne compare them; so maybe we can slightly change the query to be: Show the name of the location where the average sold of food and drink is higher than the company average.*/
 SELECT l.Name, m.ItemType, AVG(o.AmountDue) as Avergae_Amount_Due
 FROM Locations as l inner join Orders as o on l.LocationID = o.LocationID right join OrdersMenuItem as t on o.OrderID= t.OrderID inner join MenuItem as m on t.ItemID = m.ItemID
@@ -251,4 +258,18 @@ SELECT TOP 3 e.EmployeeID, e.FName, e.LName, e.LocationID, SUM(o.AmountDue) as T
 FROM Employees as e inner join Orders as o on e.EmployeeID = o.EmployeeID
 GROUP BY e.EmployeeID, e.FName, e.LName, e.LocationID
 ORDER BY SUM(o.AmountDue) DESC;
+
+/*Show customers who used cash as payment type.  */ 
+SELECT CustomerID 
+FROM Customer 
+WHERE CustomerID IN (SELECT PaymentType
+FROM Orders 
+WHERE PaymentType= 'cash'); 
+
+/* Show the customer with the most amount due. */ 
+select c.customerID,
+(select MAX(o.AmountDue)
+from Orders as o
+where o.CustomerID= c.customerID) as Max_Amount_Due
+from customer as c; 
 
