@@ -200,18 +200,30 @@ SELECT * FROM Locations;
 SELECT * FROM MenuItem;
 SELECT * FROM OrdersMenuItem;
 
-
-/*a. What is the most common type of payment?*/
+/*What is the most common type of payment?*/
 select PaymentType, COUNT(*) as Popular_Payment_Method
 from Orders
 group by PaymentType ; 
 
-/*Which employees are underperforming compared to average by orders sold?*/
+/*Who are the best 3 employees by amounts of orders sold?*/
+SELECT TOP 3 e.EmployeeID, e.FName, e.LName, e.LocationID, SUM(o.AmountDue) as Total_$_Sold
+FROM Employees as e inner join Orders as o on e.EmployeeID = o.EmployeeID
+GROUP BY e.EmployeeID, e.FName, e.LName, e.LocationID
+ORDER BY SUM(o.AmountDue) DESC;
 
-/*Show the name of the location where the average sold of food is higher than the average sold of drinks.*/
+/*Show customers who used cash as payment.  */ 
+SELECT CustomerID 
+FROM Customer 
+WHERE CustomerID IN (SELECT PaymentType
+FROM Orders 
+WHERE PaymentType= 'cash'); 
 
-
-/*Who are the best employees by amounts of orders sold? */
+/* Show the customer with the most money spent. */ 
+select c.customerID,
+(select MAX(o.AmountDue)
+from Orders as o
+where o.CustomerID= c.customerID) as Max_Amount_Due
+from customer as c; 
 
 /* Write a query to display the Customer ID, First Name and Last Name of all customers and the Quantity of items they ordered in each of their orders.*/
 SELECT a.CustomerID, b.FirstName as First_Name, b.LastName as Last_Name, c.Qty as Quantity 
@@ -228,48 +240,9 @@ SELECT
 	a.CustomerID, 
 	a.FirstName,
 	a.LastName,
-	b. count(OrderID) as Total_Number_of_Visits, /*(This has to be count of times customer has come to the restaurant)*/
+	b. count(OrderID) as Total_Number_of_Visits,
 	b. sum(AmountDue) as Total_Amount_Spent
 FROM Customer as a
 JOIN Orders as b
 on a.CustomerID = b.CustomerID
 Order By sum(AmountDue) DESC;
-
-/* NEEDS WORK Show the name of the location where the average sold of food is higher than the average sold of drinks.*/ 
-
-/*this gives us both averages for each store, we should probably change this query because its comparing the averages of each store OR need an average if its drink for store name and average if its food for store name and thne compare them; so maybe we can slightly change the query to be: Show the name of the location where the average sold of food and drink is higher than the company average.*/
-SELECT l.Name, m.ItemType, AVG(o.AmountDue) as Avergae_Amount_Due
-FROM Locations as l inner join Orders as o on l.LocationID = o.LocationID right join OrdersMenuItem as t on o.OrderID= t.OrderID inner join MenuItem as m on t.ItemID = m.ItemID
-GROUP BY l.Name, m.ItemType
-ORDER BY l.Name;
-/*Select 
-IFF (Related_Period_ID = 1, 
-        (Select 
-            AVG(Costs_Per_Capita)
-            From Costs_Per_Capita_Table
-            Where Related_Period_ID = 1),
-       (Select
-            AVG(Costs_Per_Capita)
-            From Costs_Per_Capita_Table
-            Where Related_Period_ID = 2)*/
-
-/*Who are the best 3 employees by amounts of orders sold?*/
-SELECT TOP 3 e.EmployeeID, e.FName, e.LName, e.LocationID, SUM(o.AmountDue) as Total_$_Sold
-FROM Employees as e inner join Orders as o on e.EmployeeID = o.EmployeeID
-GROUP BY e.EmployeeID, e.FName, e.LName, e.LocationID
-ORDER BY SUM(o.AmountDue) DESC;
-
-/*Show customers who used cash as payment type.  */ 
-SELECT CustomerID 
-FROM Customer 
-WHERE CustomerID IN (SELECT PaymentType
-FROM Orders 
-WHERE PaymentType= 'cash'); 
-
-/* Show the customer with the most amount due. */ 
-select c.customerID,
-(select MAX(o.AmountDue)
-from Orders as o
-where o.CustomerID= c.customerID) as Max_Amount_Due
-from customer as c; 
-
