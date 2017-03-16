@@ -201,9 +201,9 @@ SELECT * FROM MenuItem;
 SELECT * FROM OrdersMenuItem;
 
 /*What is the most common type of payment?*/
-select PaymentType, COUNT(*) as Popular_Payment_Method
-from Orders
-group by PaymentType ; 
+SELECT PaymentType, COUNT(*) as Popular_Payment_Method
+FROM Orders
+GROUP BY PaymentType; 
 
 /*Who are the best 3 employees by amounts of orders sold?*/
 SELECT TOP 3 e.EmployeeID, e.FName, e.LName, e.LocationID, SUM(o.AmountDue) as Total_$_Sold
@@ -213,17 +213,14 @@ ORDER BY SUM(o.AmountDue) DESC;
 
 /*Show customers who used cash as payment.  */ 
 SELECT CustomerID 
-FROM Customer 
-WHERE CustomerID IN (SELECT PaymentType
 FROM Orders 
-WHERE PaymentType= 'cash'); 
+WHERE PaymentType= 'cash'; 
 
 /* Show the customer with the most money spent. */ 
-select c.customerID,
-(select MAX(o.AmountDue)
-from Orders as o
-where o.CustomerID= c.customerID) as Max_Amount_Due
-from customer as c; 
+SELECT TOP 1 CustomerID, LocationID, SUM(AmountDue) as Largest_AmountDue
+FROM Orders
+GROUP BY CustomerID, LocationID
+ORDER BY SUM(AmountDue) DESC;
 
 /* Write a query to display the Customer ID, First Name and Last Name of all customers and the Quantity of items they ordered in each of their orders.*/
 SELECT a.CustomerID, b.FirstName as First_Name, b.LastName as Last_Name, c.Qty as Quantity 
@@ -246,3 +243,11 @@ FROM Customer as a
 JOIN Orders as b
 on a.CustomerID = b.CustomerID
 Order By sum(AmountDue) DESC;
+
+/*Which employees are underperforming compared to the average by dollars sold?*/
+SELECT e.EmployeeID, FName, LName
+FROM Employees as e inner join Orders as o on e.EmployeeID=o.EmployeeID
+WHERE AmountDue <
+	(SELECT AVG(AmountDue) as CompanyAverage_TotalSold
+FROM Orders)
+ORDER BY AmountDue; 
