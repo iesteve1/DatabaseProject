@@ -190,6 +190,7 @@ INSERT INTO OrdersMenuItem(OrderID, ItemID, Qty)VALUES
 (10,5,2);
 GO
 
+
 /*Queries*/
 
 SELECT * FROM Customer;
@@ -199,18 +200,55 @@ SELECT * FROM Locations;
 SELECT * FROM MenuItem;
 SELECT * FROM OrdersMenuItem;
 
-/*What is the most common type of payment? */
+
+/*a. What is the most common type of payment?*/
 select PaymentType, COUNT(*) as Popular_Payment_Method
 from Orders
 group by PaymentType ; 
 
 /*Which employees are underperforming compared to average by orders sold?*/
 
+<<<<<<< HEAD
 /*Show the name of the location where the average sold of food is higher than the average sold of drinks.*/
 
 
 /*Who are the best employees by amounts of orders sold? */
 
 
+=======
+>>>>>>> origin/master
 /*Who are the best customers based on number of visits and total amount spent?*/
+SELECT 
+	a.CustomerID, 
+	a.FirstName,
+	a.LastName,
+	b. count(OrderID) as Total_Number_of_Visits, /*(This has to be count of times customer has come to the restaurant)*/
+	b. sum(AmountDue) as Total_Amount_Spent
+FROM Customer as a
+JOIN Orders as b
+on a.CustomerID = b.CustomerID
+Order By sum(AmountDue) DESC;
+
+/* NEEDS WORK Show the name of the location where the average sold of food is higher than the average sold of drinks.*/ 
+/*this gives us both averages for each store, we should probably change this query because its comparing the averages of each store OR need an average if its drink for store name and average if its food for store name and thne compare them; so maybe we can slightly change the query to be: Show the name of the location where the average sold of food and drink is higher than the company average.*/
+SELECT l.Name, m.ItemType, AVG(o.AmountDue) as Avergae_Amount_Due
+FROM Locations as l inner join Orders as o on l.LocationID = o.LocationID right join OrdersMenuItem as t on o.OrderID= t.OrderID inner join MenuItem as m on t.ItemID = m.ItemID
+GROUP BY l.Name, m.ItemType
+ORDER BY l.Name;
+/*Select 
+IFF (Related_Period_ID = 1, 
+        (Select 
+            AVG(Costs_Per_Capita)
+            From Costs_Per_Capita_Table
+            Where Related_Period_ID = 1),
+       (Select
+            AVG(Costs_Per_Capita)
+            From Costs_Per_Capita_Table
+            Where Related_Period_ID = 2)*/
+
+/*Who are the best 3 employees by amounts of orders sold?*/
+SELECT TOP 3 e.EmployeeID, e.FName, e.LName, e.LocationID, SUM(o.AmountDue) as Total_$_Sold
+FROM Employees as e inner join Orders as o on e.EmployeeID = o.EmployeeID
+GROUP BY e.EmployeeID, e.FName, e.LName, e.LocationID
+ORDER BY SUM(o.AmountDue) DESC;
 
